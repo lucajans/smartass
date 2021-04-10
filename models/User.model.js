@@ -20,22 +20,25 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     required: true,
+    trim: true,
+    match: [/^\S+@\S+\.\S+$/, "Please use a valid email address."],
+    lowercase: true,
   },
   privacy: {
     type: String,
-    required: true,
+    required: false,
     enum: ["public", "private"],
   },
   location: {
     type: String,
-    required: true,
+    required: false,
   },
   favouriteMovie: String,
   favouriteBook: String,
   description: String,
   profilePicture: {
     type: String,
-    required: true,
+    required: false,
   },
   colorMode: {
     type: String,
