@@ -12,7 +12,7 @@ const userSchema = new Schema({
     unique: true,
     required: true,
   },
-  fullName: {
+  fullname: {
     type: String,
     required: true,
   },
@@ -26,20 +26,15 @@ const userSchema = new Schema({
     required: true,
     enum: ["public", "private"],
   },
-  location: {
-    type: String,
-    required: true,
-  },
+  location: String,
   favouriteMovie: String,
   favouriteBook: String,
   description: String,
   profilePicture: {
     type: String,
-    required: true,
   },
   colorMode: {
     type: String,
-    required: true,
     default: "blue",
     enum: ["blue", "green", "orange"],
   },

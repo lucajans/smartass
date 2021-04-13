@@ -18,7 +18,10 @@
         <input type="password" name="repeatpassword" id="repeat-password" placeholder="********" />
 
         <button type="submit">Create account</button>
-
-        {{!-- error message will be added here --}}
     </form>
+
+    {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+    {{/if}}
+
 </div>
