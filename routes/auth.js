@@ -5,6 +5,9 @@ const User = require("../models/User.model");
 
 const saltRounds = 10;
 
+// Middleware
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 // SIGNUP
 
 // Signup page router
@@ -122,7 +125,7 @@ router.post("/login", (req, res, next) => {
 });
 
 // LOG OUT
-router.get("/logout", (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     res.clearCookie("connect.sid");
     console.log("The session is destroyed. The cookie is cleared.");
