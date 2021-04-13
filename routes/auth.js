@@ -8,7 +8,7 @@ const saltRounds = 10;
 // SIGNUP
 
 // Signup page router
-router.get("/auth/signup", (req, res, next) => {
+router.get("/signup", (req, res, next) => {
   res.render("auth/signup", { username: "", fullname: "", email: "" });
 });
 
@@ -43,7 +43,7 @@ router.post("/signup", (req, res, next) => {
   User.findOne({ $or: [{ username }, { email }] })
     .then((foundUser) => {
       if (foundUser) {
-        res.render("signup", {
+        res.render("auth/signup", {
           errorMessage:
             "A user with this username/ email already exists. Choose a different one.",
         });
@@ -68,7 +68,7 @@ router.post("/signup", (req, res, next) => {
       }).then((newUser) => {
         console.log("newUser: ", newUser);
         req.session.user = newUser;
-        res.redirect("onboarding");
+        res.redirect("/user/onboarding");
       });
     })
     .catch((err) => {
@@ -76,7 +76,7 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("user/profile", (req, res, next) => {
+router.get("/user/profile", (req, res, next) => {
   const obj = {};
   if (req.session.user) {
     obj.user = req.session.user;
@@ -85,23 +85,25 @@ router.get("user/profile", (req, res, next) => {
 });
 
 // LOGIN
-router.get("/auth/login", (req, res, next) => {
+router.get("/login", (req, res, next) => {
   res.render("auth/login");
 });
 
 router.post("/login", (req, res, next) => {
   console.log("SESSION ===>", req.session);
   console.log("The user data: ", req.body);
-  const { username, password } = req.body;
-  if (username == "" || password == "") {
+  const { email, password } = req.body;
+  if (email == "" || password == "") {
     res.render("auth/login", {
       errorMessage: "Please enter both the username and the password",
     });
     return;
   }
-  User.findOne({ username }).then((foundUser) => {
+  User.findOne({ email }).then((foundUser) => {
     if (!foundUser) {
-      res.render("auth/login", { errorMessage: "Wrong credentials" });
+      res.render("auth/login", {
+        errorMessage: "Wrong credentials – no user found",
+      });
       console.log("No user found");
       return;
     }
@@ -109,29 +111,29 @@ router.post("/login", (req, res, next) => {
     // Let's validate the password
     const isPasswordOkay = bcrypt.compareSync(password, foundUser.password);
     if (!isPasswordOkay) {
-      res.render("auth/login", { errorMessage: "Wrong credentials!" });
-      console.log("Wrong password");
+      res.render("auth/login", { errorMessage: "Wrong password!" });
       return;
     }
     // Here we know the login is successfull!
     req.session.user = foundUser;
-    res.render("user/profile");
+    res.redirect("user/profile");
     console.log(req.session.user);
   });
 });
 
-// // LOG OUT
-// router.get("/auth/logout", (req, res) => {
-//   req.session.destroy((err) => {
-//     res.clearCookie("connect.sid");
-//     if (err) {
-//       return res.status(500).render("auth/logout", {
-//         errorMessage: "Something went wrong with the logout",
-//         err,
-//       });
-//     }
-//   });
-//   res.redirect("/");
-// });
+// LOG OUT
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    res.clearCookie("connect.sid");
+    console.log("The session is destroyed. The cookie is cleared.");
+    if (err) {
+      return res.status(500).render("/", {
+        errorMessage: err.message,
+      });
+      console.log("Something went wrong with the logout");
+    }
+    res.redirect("/");
+  });
+});
 
 module.exports = router;
