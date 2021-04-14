@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
 
@@ -31,12 +31,12 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  const hashedPassword = bcryptjs.hashSync(password, saltRounds);
+  const hashedPassword = bcrypt.hashSync(password, saltRounds);
   console.log(`Hashed password is: ${hashedPassword}`);
 
-  bcryptjs
+  bcrypt
     .genSalt(saltRounds)
-    .then((saltRounds) => bcryptjs.hash(password, saltRounds))
+    .then((saltRounds) => bcrypt.hash(password, saltRounds))
     .then((hashedPassword) => {
       return User.create({
         username,
@@ -105,7 +105,7 @@ router.post("/login", (req, res, next) => {
           errorMessage: "Email is not registered. Try again or sign up.",
         });
         return;
-      } else if (bcryptjs.compareSync(password, user.password)) {
+      } else if (bcrypt.compareSync(password, user.password)) {
         res.render("user-profile", { user });
       } else {
         res.render("auth/login", {
