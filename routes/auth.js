@@ -125,7 +125,7 @@ router.post("/login", (req, res, next) => {
 });
 
 // LOG OUT
-router.get("/logout", isLoggedIn, (req, res) => {
+router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     res.clearCookie("connect.sid");
     console.log("The session is destroyed. The cookie is cleared.");
