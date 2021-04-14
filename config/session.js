@@ -10,7 +10,7 @@ module.exports = (app) => {
       cookie: {
         sameSite: "strict",
         httpOnly: true,
-        maxAge: 1000 * 60 * 60 * 24 * 30, // 60 * 1000 ms === 1 min // updated for user being logged in for the whole month
+        maxAge: 1000 * 60 * 60 * 24 * 30, // a cookie lasts for a month
       },
       store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/smartass",

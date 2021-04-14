@@ -5,30 +5,33 @@ const User = require("../models/User.model");
 
 const saltRounds = 10;
 
+// Middleware
+const isLoggedIn = require("../middleware/isLoggedIn");
+
+// SIGNUP
+
+// Signup page router
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup", { username: "", fullName: "", email: "" });
+  res.render("auth/signup", { username: "", fullname: "", email: "" });
 });
 
 router.post("/signup", (req, res, next) => {
   console.log("The user data:", req.body);
-  const { username, fullName, email, password } = req.body;
-
-  if (!username || !fullName || !email || !password) {
-    return res.status(400).render("auth/signup", {
-      errorMessage:
-        "All these fields are mandatory. Please fill in the missing fields.",
-      ...req.body,
+  const { username, email, fullname, password, repeatpassword } = req.body;
+  // Here we specify that all the fields in the form are required
+  if (!username || !email || !fullname || !password || !password) {
+    res.render("auth/signup", {
+      errorMessage: "Some fields are not filled in!",
     });
+    console.log("Some fields are not filled in!");
   }
 
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-  if (!regex.test(password)) {
-    res.status(500).render("auth/signup", {
-      errorMessage:
-        "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
-      ...req.body,
+  // Here we set a minimum value for the password (8 characters)
+  if (password.length < 8) {
+    res.render("auth/signup", {
+      errorMessage: "The password needs to have minimum 8 characters",
     });
-    return;
+    console.log("The password is too short!");
   }
 
   const hashedPassword = bcrypt.hashSync(password, saltRounds);
@@ -40,81 +43,86 @@ router.post("/signup", (req, res, next) => {
     .then((hashedPassword) => {
       return User.create({
         username,
-        fullName,
         email,
+        fullname,
         password: hashedPassword,
-        location: "",
         privacy: "public",
-        profilePicture: "",
+        location: "",
         favouriteMovie: "",
         favouriteBook: "",
         description: "",
+        profilePicture: "",
+        colorMode: "blue",
+        friends: [],
+      }).then((newUser) => {
+        console.log("newUser: ", newUser);
+        req.session.user = newUser;
+        res.redirect("/user/onboarding");
       });
     })
-    .then((userInDB) => {
-      console.log(`New user in DB is:`, userInDB);
-      req.session.user = userInDB;
-      res.redirect("/userProfile");
-    })
-    .catch((error) => {
-      console.log(error);
-      if (error instanceof mongoose.Error.ValidationError) {
-        res
-          .status(500)
-          .render("auth/signup", { errorMessage: error.message, ...req.body });
-      } else if (error.code === 11000) {
-        res.status(500).render("auth/signup", {
-          errorMessage:
-            "Someone already used this username or email. Please try again.",
-          ...req.body,
-        });
-      } else {
-        next(error);
-      }
+    .catch((err) => {
+      console.log("Err: ", err);
     });
 });
 
-// Placeholder for redirecting user after sign-up. Needs to be changed.
-
-router.get("/userProfile", (req, res, next) => {
+router.get("/user/profile", (req, res, next) => {
   const obj = {};
   if (req.session.user) {
     obj.user = req.session.user;
   }
-  res.render("user-profile", { ...obj });
+  res.render("user/profile", { ...obj });
 });
 
+// LOGIN
 router.get("/login", (req, res, next) => {
   res.render("auth/login");
 });
 
 router.post("/login", (req, res, next) => {
-  console.log("SESSION ==> ", req.session);
-  console.log("The user data:", req.body);
+  console.log("SESSION ===>", req.session);
+  console.log("The user data: ", req.body);
   const { email, password } = req.body;
-  if (email === "" || password === "") {
+  if (email == "" || password == "") {
     res.render("auth/login", {
-      errorMessage: "Please enter both email and password fields",
+      errorMessage: "Please enter both the username and the password",
     });
     return;
   }
-  User.findOne({ email })
-    .then((user) => {
-      if (!user) {
-        res.render("auth/login", {
-          errorMessage: "Email is not registered. Try again or sign up.",
-        });
-        return;
-      } else if (bcrypt.compareSync(password, user.password)) {
-        req.session.user = user;
-        res.redirect("/userProfile");
-      } else {
-        res.render("auth/login", {
-          errorMessage: "Incorrect password. Please, try again.",
-        });
-      }
-    })
-    .catch((error) => next(error));
+  User.findOne({ email }).then((foundUser) => {
+    if (!foundUser) {
+      res.render("auth/login", {
+        errorMessage: "Wrong credentials – no user found",
+      });
+      console.log("No user found");
+      return;
+    }
+    // Here we know that the user with given username exists
+    // Let's validate the password
+    const isPasswordOkay = bcrypt.compareSync(password, foundUser.password);
+    if (!isPasswordOkay) {
+      res.render("auth/login", { errorMessage: "Wrong password!" });
+      return;
+    }
+    // Here we know the login is successfull!
+    req.session.user = foundUser;
+    res.redirect("user/profile");
+    console.log(req.session.user);
+  });
+});
+
+// LOG OUT
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    res.clearCookie("connect.sid");
+    console.log("The session is destroyed. The cookie is cleared.");
+    if (err) {
+      return res.status(500).render("/", {
+        errorMessage: err.message,
+      });
+      console.log("Something went wrong with the logout");
+    }
+    res.redirect("/");
+  });
 });
 
 router.post("/logout", (req, res) => {

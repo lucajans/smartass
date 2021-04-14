@@ -1,6 +1,6 @@
 <div id="signup">
     <h2>Signing up for Smartass</h2>
-    <form action="/signup" method="POST">
+    <form action="/auth/signup" method="POST">
         <label for="input-username"> Username </label>
         <input type="text" name="username" value="{{username}}" placeholder="Your username" />
 
@@ -8,7 +8,7 @@
         <input type="email" id="input-email" name="email" value="{{email}}" placeholder="Your email" />
 
         <label for="input-fullname"> Full name </label>
-        <input type="text" id="input-fullname" name="fullName" value="{{fullName}}" placeholder="Your full name" />
+        <input type="text" id="input-fullname" name="fullname" value="{{fullName}}" placeholder="Your full name" />
 
         <label for="input-location"> Location </label>
         <input type="text" id="input-location" name="location" value="{{location}}" placeholder="Your location" />
@@ -26,10 +26,10 @@
         <input type="password" name="repeatpassword" id="repeat-password" placeholder="********" />
 
         <button type="submit">Create account</button>
-
-        {{!-- error message will be added here --}}
     </form>
+
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
     {{/if}}
+
 </div>

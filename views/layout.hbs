@@ -10,20 +10,19 @@
 </head>
 
 <body>
-
-   <nav>
-      <ul>
-         <li id="nav">
-            <a href="/signup">Sign Up</a>
-            <a href="/login">Log In</a>
-         </li>
-         <form id="logout-form" action="/logout" method="POST">
-            <button>Logout</button>
-         </form>
-      </ul>
+   <nav id="auth">
+      <p>
+         <a href="/">Home</a> <span> | </span>
+         <a href="/auth/signup">Signup</a> <span> | </span>
+         <a href="/auth/login">Login</a> <span> | </span>
+         <a href="/user/profile">Username</a> <span> | </span>
+         <a href="/auth/logout">Log out</a>
+      </p>
    </nav>
 
    {{{body}}}
+
+
 
    <script src="/js/script.js"></script>
 </body>
