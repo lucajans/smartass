@@ -106,7 +106,8 @@ router.post("/login", (req, res, next) => {
         });
         return;
       } else if (bcrypt.compareSync(password, user.password)) {
-        res.render("user-profile", { user });
+        req.session.user = user;
+        res.redirect("/userProfile");
       } else {
         res.render("auth/login", {
           errorMessage: "Incorrect password. Please, try again.",
@@ -114,6 +115,12 @@ router.post("/login", (req, res, next) => {
       }
     })
     .catch((error) => next(error));
+});
+
+router.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.clearCookie("connect.sid");
+  res.redirect("/");
 });
 
 module.exports = router;
