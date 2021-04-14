@@ -1,0 +1,32 @@
+<!--View your personal profile -->
+
+{{#if user}}
+
+<div id="user-profile">
+  <div class="profile-background"></div>
+  <div class="profile-picture">
+    <img src="{{ user.profilePicture }}" alt="Profile picture">
+  </div>
+
+  <div id="user-data">
+    <h1>{{ user.username }}</h1>
+
+    <h4>Username: {{ user.username }}</h4>
+    <h4>Full Name: {{ user.fullname }}</h4>
+    <h4>Email: {{ user.email }}</h4>
+    <h4>Location: {{ user.location }}</h4>
+    <h4>A short word about yourself: {{ user.description }}</h4>
+    <h4>Favourite book: {{ user.favouriteBook }}</h4>
+    <h4>Favourite movie: {{ user.favouriteMovie }}</h4>
+    <h4>Privacy of your profile: {{ user.privacy }}</h4>
+    <h4>Current color palette: <div style="color: {{ user.colorMode }}">COLOR CIRCLE</div>
+    </h4>
+  </div>
+
+  <div class="user-btn">
+    <button type="submit" id="edit-profile"><a href="/user/my-profile/edit">Edit your profile</a></button>
+    <button type="submit" id="delete-profile">Delete your profile</button>
+  </div>
+
+</div>
+{{/if}}

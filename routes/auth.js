@@ -65,17 +65,17 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("/user/profile", (req, res, next) => {
+router.get("/user/my-profile", (req, res, next) => {
   const obj = {};
   if (req.session.user) {
     obj.user = req.session.user;
   }
-  res.render("user/profile", { ...obj });
+  res.render("user/my-profile", { ...obj });
 });
 
 // LOGIN
 router.get("/login", (req, res, next) => {
-  res.render("auth/login");
+  res.render("auth/login", { user: req.session.user });
 });
 
 router.post("/login", (req, res, next) => {
@@ -100,12 +100,16 @@ router.post("/login", (req, res, next) => {
     // Let's validate the password
     const isPasswordOkay = bcrypt.compareSync(password, foundUser.password);
     if (!isPasswordOkay) {
-      res.render("auth/login", { errorMessage: "Wrong password!" });
+      res.render(
+        "auth/login",
+        { errorMessage: "Wrong password!" },
+        { user: req.session.user }
+      );
       return;
     }
     // Here we know the login is successfull!
     req.session.user = foundUser;
-    res.redirect("user/profile");
+    res.redirect("/user/my-profile");
     console.log(req.session.user);
   });
 });

@@ -1,0 +1,64 @@
+<!--Edit your personal profile-->
+
+{{#if user}}
+
+<div id="user-profile">
+  <div class="profile-background"></div>
+  <div class="profile-picture">
+    <img src="{{ user.profilePicture }}" alt="Profile picture">
+    <h1>{{ user.username }}</h1>
+  </div>
+
+  <div class="edit-text">
+    <h3>You are editing your profile</h3>
+  </div>
+
+  <div id="user-data-edit">
+
+    <form id="profile-edit" method="POST" action="/user/my-profile">
+      <label for="username">Username</label>
+      <input type="text" id="username" value="{{ user.username }}"><br>
+
+      <label for="fullname">Full name</label>
+      <input type="text" id="fullname" value="{{ user.fullname }}"><br>
+
+      <label for="profile-pic">Profile picture</label>
+      <input type="text" id="profile-pic" value="{{ user.profilePicture }}"><br>
+
+      <label for="mail">Mail</label>
+      <input type="mail" id="mail" value="{{ user.mail }}"><br>
+
+      <label for="location">Profile picture</label>
+      <input type="text" id="location" value="{{ user.location }}"><br>
+
+      <label for="description">A short word about yourself</label>
+      <input type="text" id="description" value="{{ user.description }}"><br>
+
+      <label for="favouriteBook">Favourite book</label>
+      <input type="text" id="favouriteBook" value="{{ user.favouriteBook }}"><br>
+
+      <label for="favouriteMovie">Favourite movie</label>
+      <input type="text" id="favouriteMovie" value="{{ user.favouriteMovie }}"><br>
+
+      <span>Privacy of the account</span><br>
+      <input type="radio" id="private" name="privacy" value="private">
+      <label for="private">Private</label><br>
+      <input type="radio" id="public" name="privacy" value="public">
+      <label for="public">Public</label><br>
+
+      <span>Current color palette</span><br>
+      <input type="radio" id="colormode1" name="colormode1" value="Blue">
+      <label for="colormode1"> Blue</label><br>
+      <input type="radio" id="colormode2" name="colormode2" value="Green">
+      <label for="colormode2"> Green</label><br>
+      <input type="radio" id="colormode3" name="colormode3" value="Orange">
+      <label for="colormode3"> Orange</label>
+    </form><br>
+  </div>
+
+  <div class="user-btn">
+    <button type="submit" id="save-edit-profile" method="GET" action="/user/profile">Save the changes!</button>
+  </div>
+
+</div>
+{{/if}}
