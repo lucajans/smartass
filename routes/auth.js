@@ -31,7 +31,6 @@ router.post("/signup", (req, res, next) => {
     console.log("The password is too short!");
   }
 
-<<<<<<< HEAD
   // Here we specify that repeat password needs to match the first password
   if (password != repeatpassword) {
     res.render("auth/signup", {
@@ -54,16 +53,6 @@ router.post("/signup", (req, res, next) => {
       const generatedSalt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, generatedSalt);
       User.create({
-=======
-  const hashedPassword = bcrypt.hashSync(password, saltRounds);
-  console.log(`Hashed password is: ${hashedPassword}`);
-
-  bcrypt
-    .genSalt(saltRounds)
-    .then((saltRounds) => bcrypt.hash(password, saltRounds))
-    .then((hashedPassword) => {
-      return User.create({
->>>>>>> ljanssens/first_iteration
         username,
         email,
         fullname,
@@ -110,42 +99,6 @@ router.post("/login", (req, res, next) => {
     });
     return;
   }
-<<<<<<< HEAD
-  User.findOne({ username }).then((foundUser) => {
-    if (!foundUser) {
-      res.render("auth/login", { errorMessage: "Wrong credentials" });
-      console.log("No user found");
-      return;
-    }
-    // Here we know that the user with given username exists
-    // Let's validate the password
-    const isPasswordOkay = bcrypt.compareSync(password, foundUser.password);
-    if (!isPasswordOkay) {
-      res.render("auth/login", { errorMessage: "Wrong credentials!" });
-      console.log("Wrong password");
-      return;
-    }
-    // Here we know the login is successfull!
-    req.session.user = foundUser;
-    res.render("user/profile");
-    console.log(req.session.user);
-  });
-});
-
-// // LOG OUT
-// router.get("/auth/logout", (req, res) => {
-//   req.session.destroy((err) => {
-//     res.clearCookie("connect.sid");
-//     if (err) {
-//       return res.status(500).render("auth/logout", {
-//         errorMessage: "Something went wrong with the logout",
-//         err,
-//       });
-//     }
-//   });
-//   res.redirect("/");
-// });
-=======
   User.findOne({ email })
     .then((user) => {
       if (!user) {
@@ -170,6 +123,5 @@ router.post("/logout", (req, res) => {
   res.clearCookie("connect.sid");
   res.redirect("/");
 });
->>>>>>> ljanssens/first_iteration
 
 module.exports = router;
