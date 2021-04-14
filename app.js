@@ -28,9 +28,6 @@ app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 
 // 👇 Start handling routes here
 const index = require("./routes/index");
-<<<<<<< HEAD
-app.use("/", index);
-=======
 const auth = require("./routes/auth");
 const dashboard = require("./routes/dashboard");
 const createGoal = require("./routes/createGoal");
@@ -38,7 +35,6 @@ app.use("/", index);
 app.use("/", auth);
 app.use("/", dashboard);
 app.use("/", createGoal);
->>>>>>> ljanssens/first_iteration
 
 const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);
