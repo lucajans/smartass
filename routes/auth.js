@@ -31,6 +31,7 @@ router.post("/signup", (req, res, next) => {
     console.log("The password is too short!");
   }
 
+<<<<<<< HEAD
   // Here we specify that repeat password needs to match the first password
   if (password != repeatpassword) {
     res.render("auth/signup", {
@@ -53,6 +54,16 @@ router.post("/signup", (req, res, next) => {
       const generatedSalt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, generatedSalt);
       User.create({
+=======
+  const hashedPassword = bcrypt.hashSync(password, saltRounds);
+  console.log(`Hashed password is: ${hashedPassword}`);
+
+  bcrypt
+    .genSalt(saltRounds)
+    .then((saltRounds) => bcrypt.hash(password, saltRounds))
+    .then((hashedPassword) => {
+      return User.create({
+>>>>>>> ljanssens/first_iteration
         username,
         email,
         fullname,
@@ -99,6 +110,7 @@ router.post("/login", (req, res, next) => {
     });
     return;
   }
+<<<<<<< HEAD
   User.findOne({ username }).then((foundUser) => {
     if (!foundUser) {
       res.render("auth/login", { errorMessage: "Wrong credentials" });
@@ -133,5 +145,31 @@ router.post("/login", (req, res, next) => {
 //   });
 //   res.redirect("/");
 // });
+=======
+  User.findOne({ email })
+    .then((user) => {
+      if (!user) {
+        res.render("auth/login", {
+          errorMessage: "Email is not registered. Try again or sign up.",
+        });
+        return;
+      } else if (bcrypt.compareSync(password, user.password)) {
+        req.session.user = user;
+        res.redirect("/userProfile");
+      } else {
+        res.render("auth/login", {
+          errorMessage: "Incorrect password. Please, try again.",
+        });
+      }
+    })
+    .catch((error) => next(error));
+});
+
+router.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.clearCookie("connect.sid");
+  res.redirect("/");
+});
+>>>>>>> ljanssens/first_iteration
 
 module.exports = router;

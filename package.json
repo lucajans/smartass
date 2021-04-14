@@ -8,6 +8,10 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+<<<<<<< HEAD
+=======
+    "bcryptjs": "^2.4.3",
+>>>>>>> ljanssens/first_iteration
     "connect-mongo": "^4.4.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
