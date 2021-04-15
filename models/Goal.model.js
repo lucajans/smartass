@@ -4,7 +4,7 @@ const goalSchema = new Schema({
   category: {
     type: String,
     required: true,
-    enum: ["Books", "Movies"],
+    enum: ["books", "movies"],
   },
   goalNumber: {
     type: Number,

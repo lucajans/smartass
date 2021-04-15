@@ -3,9 +3,8 @@ const router = express.Router();
 const Goal = require("../models/Goal.model");
 
 router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
-  Goal.find().then((allGoals) => {
-    console.log("allGoals:", allGoals);
+  Goal.find({}).then((allGoals) => {
+    res.render("dashboard", { dashboardGoals: allGoals });
   });
 });
 

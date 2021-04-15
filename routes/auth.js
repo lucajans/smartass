@@ -7,6 +7,7 @@ const saltRounds = 10;
 
 // Middleware
 const isLoggedIn = require("../middleware/isLoggedIn");
+const { replaceOne } = require("../models/User.model");
 
 // SIGNUP
 

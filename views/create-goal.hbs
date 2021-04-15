@@ -1,6 +1,6 @@
-<form action="/createGoal">
+<form action="/createGoal" method="POST">
     <label for="category"> Goal category </label>
-    <select name="category" placeholder="The goal category" />
+    <select name="category" id="category" placeholder="The goal category" />
     <option value="" disabled selected hidden>Choose a category</option>
     <option value="books">Books</option>
     <option value="movies">Movies</option>
@@ -12,5 +12,5 @@
     <input type="date" id="startDate" name="startDate" />
     <label for="endDate"> End date </label>
     <input type="date" id="endDate" name="endDate" />
-    <button>Submit goal</button>
+    <button type="submit">Submit goal</button>
 </form>
