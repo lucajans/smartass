@@ -57,7 +57,7 @@ router.post("/signup", (req, res, next) => {
       }).then((newUser) => {
         console.log("newUser: ", newUser);
         req.session.user = newUser;
-        res.redirect("/user/onboarding");
+        res.redirect("/onboarding");
       });
     })
     .catch((err) => {
@@ -126,14 +126,14 @@ router.get("/logout", (req, res) => {
       });
       console.log("Something went wrong with the logout");
     }
-    res.redirect("/");
+    res.render("auth/logout");
   });
 });
 
-router.post("/logout", (req, res) => {
-  req.session.destroy();
-  res.clearCookie("connect.sid");
-  res.redirect("/");
-});
+// router.post("/logout", (req, res) => {
+//   req.session.destroy();
+//   res.clearCookie("connect.sid");
+//   res.redirect("/auth/logout");
+// });
 
 module.exports = router;
