@@ -14,12 +14,9 @@
       <p>
          <a href="/">Home</a> <span> | </span>
          <a href="/auth/signup">Signup</a> <span> | </span>
-         <a href="/auth/login">Login</a>
-         {{#if user}}
-         <span>| </span>
-         <a href="/user/my-profile">{{ user.username }}</a> <span> | </span>
-         <a href="/auth/logout">Log out</a>
-         {{/if}}
+         <a href="/auth/login">Login</a> <span> | </span>
+         <a href="/auth/logout">Log out</a> <span>| </span>
+         <a href="/user/my-profile">{{ user.username }}</a>
       </p>
    </nav>
 

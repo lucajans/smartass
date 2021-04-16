@@ -16,7 +16,7 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  console.log("The user data:", req.body);
+  // console.log("The user data:", req.body);
   const { username, email, fullname, password, repeatpassword } = req.body;
   // Here we specify that all the fields in the form are required
   if (!username || !email || !fullname || !password || !password) {
@@ -89,6 +89,7 @@ router.post("/login", (req, res, next) => {
     return;
   }
   User.findOne({ email }).then((foundUser) => {
+    console.log("USER: ", foundUser);
     if (!foundUser) {
       res.render("auth/login", {
         errorMessage: "Wrong credentials – no user found",
