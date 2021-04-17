@@ -1,0 +1,23 @@
+{{#if thisUser}}
+
+<div id="user-profile">
+  <div class="profile-background"></div>
+  <div class="profile-picture">
+    <img src="{{ thisUser.profilePicture }}" alt="Profile picture">
+  </div>
+
+  <div id="user-data">
+    <h1>{{ thisUser.username }}</h1>
+  </div>
+
+  <div class="user-privacy">
+    <p>This user's profile is private. Invite them to your friends' circle in order to see
+      their personal information and goals dashboard.</p>
+  </div>
+
+  <div class="button-div">
+    <button type="submit" id="add-friends-btn">Invite to friends</button>
+  </div>
+
+</div>
+{{/if}}

@@ -17,7 +17,7 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  console.log("The user data:", req.body);
+  // console.log("The user data:", req.body);
   const { username, email, fullname, password, repeatpassword } = req.body;
   // Here we specify that all the fields in the form are required
   if (!username || !email || !fullname || !password || !password) {
@@ -58,7 +58,7 @@ router.post("/signup", (req, res, next) => {
       }).then((newUser) => {
         console.log("newUser: ", newUser);
         req.session.user = newUser;
-        res.redirect("/user/onboarding");
+        res.redirect("/onboarding");
       });
     })
     .catch((err) => {
@@ -66,17 +66,17 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("/user/profile", (req, res, next) => {
+router.get("/user/my-profile", (req, res, next) => {
   const obj = {};
   if (req.session.user) {
     obj.user = req.session.user;
   }
-  res.render("user/profile", { ...obj });
+  res.render("user/my-profile", { ...obj });
 });
 
 // LOGIN
 router.get("/login", (req, res, next) => {
-  res.render("auth/login");
+  res.render("auth/login", { user: req.session.user });
 });
 
 router.post("/login", (req, res, next) => {
@@ -90,6 +90,7 @@ router.post("/login", (req, res, next) => {
     return;
   }
   User.findOne({ email }).then((foundUser) => {
+    console.log("USER: ", foundUser);
     if (!foundUser) {
       res.render("auth/login", {
         errorMessage: "Wrong credentials – no user found",
@@ -101,12 +102,16 @@ router.post("/login", (req, res, next) => {
     // Let's validate the password
     const isPasswordOkay = bcrypt.compareSync(password, foundUser.password);
     if (!isPasswordOkay) {
-      res.render("auth/login", { errorMessage: "Wrong password!" });
+      res.render(
+        "auth/login",
+        { errorMessage: "Wrong password!" },
+        { user: req.session.user }
+      );
       return;
     }
     // Here we know the login is successfull!
     req.session.user = foundUser;
-    res.redirect("user/profile");
+    res.redirect("/user/my-profile");
     console.log(req.session.user);
   });
 });
@@ -122,14 +127,14 @@ router.get("/logout", (req, res) => {
       });
       console.log("Something went wrong with the logout");
     }
-    res.redirect("/");
+    res.render("auth/logout");
   });
 });
 
-router.post("/logout", (req, res) => {
-  req.session.destroy();
-  res.clearCookie("connect.sid");
-  res.redirect("/");
-});
+// router.post("/logout", (req, res) => {
+//   req.session.destroy();
+//   res.clearCookie("connect.sid");
+//   res.redirect("/auth/logout");
+// });
 
 module.exports = router;
