@@ -8,7 +8,14 @@ const goalSchema = new Schema({
   category: {
     type: String,
     required: true,
-    enum: ["books", "movies"],
+    enum: [
+      "books",
+      "movies",
+      "runs",
+      "gym sessions",
+      "bike rides",
+      "cooking at home",
+    ],
   },
   goalNumber: {
     type: Number,
@@ -25,9 +32,14 @@ const goalSchema = new Schema({
   },
   currentNumber: {
     type: Number,
+    default: 0,
   },
   progress: {
     type: Number,
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 
