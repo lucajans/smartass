@@ -111,4 +111,12 @@ progress[value]::-webkit-progress-value {
     10px 10px 30px rgba(0, 0, 0, 0.7);
 }
 
+/* ALEKSANDRA */
+
+.friends-pic img {
+  border-radius: 50%,
+  height: 50px,
+  width: 50px
+}
+
 /*# sourceMappingURL=style.css.map */

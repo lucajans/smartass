@@ -91,7 +91,20 @@ router.get("/profile/:userId", (req, res, next) => {
 
 /* GET user personal friends page */
 router.get("/my-friends", (req, res, next) => {
-  res.render("user/my-friends", { user: req.session.user });
+  User.findById(req.session.user._id)
+    .populate([
+      // { path: "friends", model: "User" },
+      "friends",
+      "pendingInvitations",
+      "receivedInvitations",
+    ])
+    // .populate("friends pendingInvitations receivedInvitations")
+    // .populate("friends")
+    // .populate("pendingInvitations")
+    // .populate("receivedInvitations")
+    .then((loggedUser) => {
+      res.render("user/my-friends", { user: loggedUser });
+    });
 });
 
 /* GET user invites another user to friends */
