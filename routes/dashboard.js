@@ -29,11 +29,17 @@ router.get(
 router.get("/user/goals/:goalId", (req, res, next) => {
   Goal.findById(req.params.goalId)
     .then((foundGoal) => {
+      const percentage = (foundGoal.currentNumber / foundGoal.goalNumber) * 100;
+      return {
+        ...foundGoal.toJSON(),
+        percentage,
+      };
+    })
+    .then((foundGoal) => {
       res.render("user-goal", { goal: foundGoal });
     })
     .catch((error) => {
       console.log("Error while retrieving goal details: ", error);
-      next(error);
     });
 });
 
