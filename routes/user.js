@@ -68,23 +68,50 @@ router.post("/my-profile/delete", (req, res) => {
     });
 });
 
-/* GET user user goodbye page */
+/* GET user goodbye page */
 router.get("/goodbye", (req, res, next) => {
   res.render("user/goodbye", { user: req.session.user });
 });
 
 /* GET other user profile */
-router.get("/profile/:username", (req, res, next) => {
+router.get("/profile/:userId", (req, res, next) => {
   // Here we check if the user with given username exists
-  User.findOne({ username: req.params.username }).then((thisUser) => {
+  const userId = req.params.userId;
+  User.findById(userId).then((thisUser) => {
     console.log("We found this user: ", thisUser);
     if (!thisUser) {
       console.log("This user doesn't exist.");
-      res.render("/");
+      return res.redirect("/");
     }
 
     // By now we know that the user exists. Here we get the information we need.
-    res.render("user/user-profile", { thisUser });
+    res.render("user/stranger-profile-public", { thisUser });
+  });
+});
+
+/* GET user personal friends page */
+router.get("/my-friends", (req, res, next) => {
+  res.render("user/my-friends", { user: req.session.user });
+});
+
+/* GET user invites another user to friends */
+router.get("/profile/:userId/invitation-sent", (req, res, next) => {
+  const invitedUser = req.params.userId;
+  const invitingUser = req.session.user._id;
+  User.findByIdAndUpdate(
+    invitedUser,
+    { $addToSet: { receivedInvitations: invitingUser } },
+    { new: true }
+  ).then(() => {
+    User.findByIdAndUpdate(
+      invitingUser,
+      { $addToSet: { pendingInvitations: invitedUser } },
+      { new: true }
+    ).then((updatedInvitedUser) => {
+      console.log("Updated inviting user: ", updatedInvitedUser);
+      res.redirect("/user/my-friends");
+      return;
+    });
   });
 });
 

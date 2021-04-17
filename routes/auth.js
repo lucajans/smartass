@@ -25,6 +25,7 @@ router.post("/signup", (req, res, next) => {
       errorMessage: "Some fields are not filled in!",
     });
     console.log("Some fields are not filled in!");
+    return;
   }
 
   // Here we set a minimum value for the password (8 characters)
@@ -33,6 +34,7 @@ router.post("/signup", (req, res, next) => {
       errorMessage: "The password needs to have minimum 8 characters",
     });
     console.log("The password is too short!");
+    return;
   }
 
   const hashedPassword = bcrypt.hashSync(password, saltRounds);

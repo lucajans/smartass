@@ -10,20 +10,21 @@
 </head>
 
 <body>
-   {{!-- <nav id="auth">
-      <p>
-         <a href="/">Home</a> <span> | </span>
-         {{#unless user}}
-         <a href="/auth/signup">Signup</a> <span> | </span>
-         <a href="/auth/login">Login</a>
-         {{/unless}}
-         {{#if user}}
-         <a href="">My goals</a> <span>| </span>
-         <a href="/user/my-profile">My profile</a> <span>| </span>
-         <a href="/user/my-frieds">My friends</a> <span>| </span>
-         <a href="/auth/logout">Log out</a> <span>| </span>
-      </p>
-   </nav> --}}
+   <nav id="main-nav">
+      <a href="/">Home</a> <span> | </span>
+      {{#unless user}}
+      <a href="/auth/signup">Signup</a> <span> | </span>
+      <a href="/auth/login">Login</a>
+      {{/unless}}
+
+      {{#if user}}
+      <a href="/user/my-profile">{{user.username}}</a> <span>| </span>
+      <a href="">My goals</a> <span>| </span>
+      <a href="/user/my-profile">My profile</a> <span>| </span>
+      <a href="/user/my-friends">My friends</a> <span>| </span>
+      <a href="/auth/logout">Log out</a> <span>| </span>
+      {{/if}}
+   </nav>
 
    {{{body}}}
 

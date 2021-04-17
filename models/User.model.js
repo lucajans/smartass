@@ -42,6 +42,8 @@ const userSchema = new Schema({
     enum: ["blue", "green", "orange"],
   },
   friends: [String],
+  pendingInvitations: [String],
+  receivedInvitations: [String],
 });
 
 const User = model("User", userSchema);

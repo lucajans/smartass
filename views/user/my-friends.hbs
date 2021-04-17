@@ -1,0 +1,36 @@
+<h1>My friends</h1>
+
+<div>
+  <div class="search-friends">
+    <h4>Look for new friends</h4>
+    <p>Type a user name or full name to find your friends!</p>
+    <input type="search">
+    <button type="submit">Search!</button>
+  </div>
+
+  <!--Invitations received from other users waiting for your response-->
+  <div id="received-invit">
+    <h4>Received invitations</h4>
+    <p>Here you can see who invited you to their friends circle.
+      Accept or reject the invitation.</p><br>
+    {{#each user}}
+    <p>{{this.receivedInvitations}}</p>
+    {{/each}}
+  </div>
+
+  <!--Invitations sent to other users and waiting for their response-->
+  <div id="pending-invit">
+    <h4>Pending invitations</h4>
+    <p>Here you can see the invitations that your have sent to other users.</p><br>
+
+  </div>
+
+  <!--Your friends circle-->
+  <div id="friends-circle">
+    <h4>Your friends</h4>
+    <p>And here are all your friends... not a popular type, are you?</p><br>
+
+  </div>
+
+
+</div>
