@@ -16,7 +16,8 @@ const hbs = require("hbs");
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
-require("./config")(app);
+require("./config/")(app);
+require("./config/session")(app);
 
 // default value for title local
 const projectName = "smartass";
@@ -27,7 +28,22 @@ app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
 
 // 👇 Start handling routes here
 const index = require("./routes/index");
+const auth = require("./routes/auth");
+const dashboard = require("./routes/dashboard");
+const createGoal = require("./routes/createGoal");
 app.use("/", index);
+app.use("/", auth);
+app.use("/", dashboard);
+app.use("/", createGoal);
+
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
+
+const userRoutes = require("./routes/user");
+app.use("/user", userRoutes);
+
+const onboardingRoutes = require("./routes/onboarding");
+app.use("/onboarding", onboardingRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

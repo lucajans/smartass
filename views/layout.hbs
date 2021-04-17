@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{title}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>{{title}}</title>
+   <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 
-   <body>
+<body>
+   {{!-- <nav id="auth">
+      <p>
+         <a href="/">Home</a> <span> | </span>
+         {{#unless user}}
+         <a href="/auth/signup">Signup</a> <span> | </span>
+         <a href="/auth/login">Login</a>
+         {{/unless}}
+         {{#if user}}
+         <a href="">My goals</a> <span>| </span>
+         <a href="/user/my-profile">My profile</a> <span>| </span>
+         <a href="/user/my-frieds">My friends</a> <span>| </span>
+         <a href="/auth/logout">Log out</a> <span>| </span>
+      </p>
+   </nav> --}}
 
-      {{{body}}}
+   {{{body}}}
 
-      <script src="/js/script.js"></script>
-   </body>
+
+
+   <script src="/js/script.js"></script>
+</body>
 
 </html>

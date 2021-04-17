@@ -1,0 +1,19 @@
+<h1>Here you can see an overview of your goals!</h1>
+
+{{#if dashboardGoals}}
+{{#each dashboardGoals}}
+<a href="/user/goals/{{this._id}}">
+    <h3>{{this.goalName}}</h3>
+</a>
+{{!-- Add attributes max and value --}}
+<div id="goalProgress">
+    <progress id="goalProgressBar" max="100" value={{this.percentage}}> </progress>
+</div>
+<button><a href="/user/goals/{{this._id}}/progress">Add your progress here.</a></button>
+
+{{/each}}
+{{else}}
+<h3>You have no goals yet. Please, create one!</h2>
+    {{/if}}
+    <br>
+    <button id="create-another-goal"><a href="/createGoal">Create another goal</a></button>

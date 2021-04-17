@@ -1,0 +1,81 @@
+<h1>This is step 1</h1>
+
+<div>
+  <div id="checklist">
+    <h3>The checklist</h3>
+    <input type="checkbox" id="step1" name="step1" value="step1">
+    <label for="step1"> Step 1: Fill in your profile</label><br>
+
+    <input type="checkbox" id="step2" name="step2" value="step2">
+    <label for="step2"> Step 2: Set your first goal</label><br>
+
+    <input type="checkbox" id="step3" name="step3" value="step3">
+    <label for="step3"> Step 3: Build your friends circle</label><br><br>
+
+    <button typu="submit"><a href="/onboarding/step-2">Next step!</a></button><br><br>
+  </div>
+
+  <!--Edit your personal profile-->
+
+  {{#if user}}
+
+  <div id="user-profile">
+    <div class="profile-background"></div>
+    <div class="profile-picture">
+      <img src="{{ user.profilePicture }}" alt="Profile picture">
+      <h1>{{ user.username }}</h1>
+    </div>
+
+    <div class="edit-text">
+      <h3>You are editing your profile</h3>
+    </div>
+
+    <div id="user-data-edit">
+
+      <form id="profile-edit" method="POST" action="/onboarding/step-1/done">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="{{ user.username }}"><br>
+
+        <label for="fullname">Full name</label>
+        <input type="text" name="fullname" id="fullname" value="{{ user.fullname }}"><br>
+
+        <label for="profilePicture">Profile picture</label>
+        <input type="text" name="profilePicture" id="profilePicture" value="{{ user.profilePicture }}"><br>
+
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" value="{{ user.email }}"><br>
+
+        <label for="location">Location</label>
+        <input type="location" name="location" id="location" value="{{ user.location }}"><br>
+
+        <label for="description">A short word about yourself</label>
+        <input type="text" name="description" id="description" value="{{ user.description }}"><br>
+
+        <label for="favouriteBook">Favourite book</label>
+        <input type="text" name="favouriteBook" id="favouriteBook" value="{{ user.favouriteBook }}"><br>
+
+        <label for="favouriteMovie">Favourite movie</label>
+        <input type="text" name="favouriteMovie" id="favouriteMovie" value="{{ user.favouriteMovie }}"><br>
+
+        <span>Privacy of the account</span><br>
+        <input type="radio" name="privacy" id="private" name="privacy" value="private">
+        <label for="private">Private</label><br>
+        <input type="radio" name="privacy" id="public" name="privacy" value="public">
+        <label for="public">Public</label><br>
+
+        <span>Current color palette</span><br>
+        <input type="radio" name="colorMode" id="colormode1" name="colormode1" value="Blue">
+        <label for="colormode1"> Blue</label><br>
+        <input type="radio" name="colorMode" id="colormode2" name="colormode2" value="Green">
+        <label for="colormode2"> Green</label><br>
+        <input type="radio" name="colorMode" id="colormode3" name="colormode3" value="Orange">
+        <label for="colormode3"> Orange</label><br><br>
+
+        <button type="submit" id="save-edit-profile">Save the changes!</button>
+      </form>
+    </div>
+
+  </div>
+  {{/if}}
+
+</div>

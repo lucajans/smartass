@@ -1,0 +1,48 @@
+<div id="user-profile">
+  <div class="profile-background"></div>
+  <div class="profile-picture">
+    <img src="{{ thisUser.profilePicture }}" alt="Profile picture">
+  </div>
+
+  <div id="user-data">
+    <h1>{{ thisUser.username }}</h1>
+
+    <h4>Username: {{ thisUser.username }}</h4>
+    <h4>Full Name: {{ thisUser.fullname }}</h4>
+    <h4>Email: {{ thisUser.email }}</h4>
+    <h4>Location: {{ thisUser.location }}</h4>
+    <h4>A short word about yourself: {{ thisUser.description }}</h4>
+    <h4>Favourite book: {{ thisUser.favouriteBook }}</h4>
+    <h4>Favourite movie: {{ thisUser.favouriteMovie }}</h4>
+    <h4>Privacy of your profile: {{ thisUser.privacy }}</h4>
+    <h4>Current color palette: <div style="color: {{ thisUser.colorMode }}">COLOR CIRCLE</div>
+    </h4>
+  </div>
+
+  <div class="button-div">
+    <button type="submit" id="see-goals-btn">Check out progress</button>
+    <button type="submit" id="rmv-friends-btn">Remove from friends</button>
+  </div>
+
+  <div class="users-friends">
+    <h2 class="profile-subtitle">Friends</h2>
+    <div class="user-images">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture"><br>
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture"><br>
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+      <img url="" alt="profile picture">
+    </div>
+  </div>
+
+</div>
