@@ -8,8 +8,9 @@ router.get("/createGoal", (req, res) => {
 });
 
 router.post("/createGoal", (req, res) => {
-  const { category, goalNumber, startDate, endDate } = req.body;
+  const { goalName, category, goalNumber, startDate, endDate } = req.body;
   Goal.create({
+    goalName,
     category,
     goalNumber,
     startDate,
@@ -17,7 +18,7 @@ router.post("/createGoal", (req, res) => {
   })
     .then((goalInDB) => console.log("New goal created!"))
     .catch((error) => console.log("We found an error:", error));
-  res.redirect("/dashboard");
+  res.redirect("/user/dashboard");
 });
 
 module.exports = router;

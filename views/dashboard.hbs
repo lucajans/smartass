@@ -1,16 +1,17 @@
 <h1>Here you can an overview of your goals!</h1>
-<h2>Life is a race here.</h2>
 
 {{#if dashboardGoals}}
 {{#each dashboardGoals}}
-<p>You aim to read or watch {{this.goalNumber}} {{this.category}} from {{this.startDate}} to {{this.endDate}}. Let's get
-    it done!
-</p>
+<a href="/user/goals/{{this.id}}">
+    <h3>{{this.goalName}}</h3>
+</a>
+<div id="myProgress">
+    <div id="myBar"></div>
+</div>
 
 {{/each}}
 {{else}}
-<h2>You have no goals yet. Please, create one!</h2>
-{{/if}}
+<h3>You have no goals yet. Please, create one!</h2>
+    {{/if}}
 
-
-<button type="submit"><a href="/createGoal">Create another goal</a></button>
+    <button type="submit" id="create-another-goal"><a href="/createGoal">Create another goal</a></button>

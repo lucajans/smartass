@@ -1,6 +1,10 @@
 const { Schema, model } = require("mongoose");
 
 const goalSchema = new Schema({
+  goalName: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     required: true,
@@ -18,6 +22,12 @@ const goalSchema = new Schema({
   endDate: {
     type: Date,
     required: true,
+  },
+  currentNumber: {
+    type: Number,
+  },
+  progress: {
+    type: Number,
   },
 });
 

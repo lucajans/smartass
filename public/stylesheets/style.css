@@ -23,4 +23,30 @@ h1 {
   align-items: center;
 }
 
+#create-goal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1em 1em;
+}
+
+#create-goal > div {
+  margin: 1em;
+}
+
+#myProgress {
+  width: 60%;
+  background-color: rgb(5, 52, 77);
+}
+
+#myBar {
+  width: 10%;
+  height: 40px;
+  background-color: rgb(99, 187, 209);
+}
+
+#create-another-goal {
+  margin: 1em;
+}
+
 /*# sourceMappingURL=style.css.map */
