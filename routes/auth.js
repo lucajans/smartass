@@ -127,14 +127,8 @@ router.get("/logout", (req, res) => {
       });
       console.log("Something went wrong with the logout");
     }
-    res.render("auth/logout");
+    res.redirect("/");
   });
 });
-
-// router.post("/logout", (req, res) => {
-//   req.session.destroy();
-//   res.clearCookie("connect.sid");
-//   res.redirect("/auth/logout");
-// });
 
 module.exports = router;
