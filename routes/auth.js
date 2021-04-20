@@ -5,9 +5,7 @@ const User = require("../models/User.model");
 
 const saltRounds = 10;
 
-// Middleware
 const isLoggedIn = require("../middleware/isLoggedIn");
-const { replaceOne } = require("../models/User.model");
 
 // SIGNUP
 
@@ -68,7 +66,7 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("/user/my-profile", (req, res, next) => {
+router.get("/user/my-profile", isLoggedIn, (req, res, next) => {
   const obj = {};
   if (req.session.user) {
     obj.user = req.session.user;
@@ -78,7 +76,11 @@ router.get("/user/my-profile", (req, res, next) => {
 
 // LOGIN
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { user: req.session.user });
+  console.log(req.query.from);
+  const errorMessage = req.query.from
+    ? `You are not authorized to visit ${req.query.from}`
+    : null;
+  res.render("auth/login", { user: req.session.user, errorMessage });
 });
 
 router.post("/login", (req, res, next) => {
@@ -119,7 +121,7 @@ router.post("/login", (req, res, next) => {
 });
 
 // LOG OUT
-router.get("/logout", (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     res.clearCookie("connect.sid");
     console.log("The session is destroyed. The cookie is cleared.");

@@ -1,23 +1,25 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
 
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 /* GET onboarding page */
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   res.render("onboarding/onboarding", { user: req.session.user });
 });
 
 /* GET onboarding step 1 page */
-router.get("/step-1", (req, res, next) => {
+router.get("/step-1", isLoggedIn, (req, res, next) => {
   res.render("onboarding/step-1", { user: req.session.user });
 });
 
 /* GET onboarding step 1 page done */
-router.get("/step-1/done", (req, res, next) => {
+router.get("/step-1/done", isLoggedIn, (req, res, next) => {
   res.render("onboarding/step-1-done", { user: req.session.user });
 });
 
 /* POST step 1: edit your profile */
-router.post("/step-1/done", (req, res, next) => {
+router.post("/step-1/done", isLoggedIn, (req, res, next) => {
   console.log("User data after edition: ", req.body);
   const {
     username,
@@ -60,22 +62,22 @@ router.post("/step-1/done", (req, res, next) => {
 });
 
 /* GET onboarding step 2 page */
-router.get("/step-2", (req, res, next) => {
+router.get("/step-2", isLoggedIn, (req, res, next) => {
   res.render("onboarding/step-2", { user: req.session.user });
 });
 
 /* GET onboarding step 2 page done */
-router.get("/step-2/done", (req, res, next) => {
+router.get("/step-2/done", isLoggedIn, (req, res, next) => {
   res.render("onboarding/step-2-done", { user: req.session.user });
 });
 
 /* GET onboarding step 3 page */
-router.get("/step-3", (req, res, next) => {
+router.get("/step-3", isLoggedIn, (req, res, next) => {
   res.render("onboarding/step-3", { user: req.session.user });
 });
 
 /* GET onboarding step 3 page done */
-router.get("/step-3/done", (req, res, next) => {
+router.get("/step-3/done", isLoggedIn, (req, res, next) => {
   res.render("onboarding/step-3-done", { user: req.session.user });
 });
 

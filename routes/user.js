@@ -1,18 +1,20 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
 
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 /* GET user personal profile page */
-router.get("/my-profile", (req, res, next) => {
+router.get("/my-profile", isLoggedIn, (req, res, next) => {
   res.render("user/my-profile", { user: req.session.user });
 });
 
 /* GET user personal profile edition page */
-router.get("/my-profile/edit", (req, res, next) => {
+router.get("/my-profile/edit", isLoggedIn, (req, res, next) => {
   res.render("user/my-profile-edit", { user: req.session.user });
 });
 
 /* POST user personal profile edition page */
-router.post("/my-profile/edit", (req, res, next) => {
+router.post("/my-profile/edit", isLoggedIn, (req, res, next) => {
   console.log("User data after edition: ", req.body);
   const {
     username,
@@ -55,7 +57,7 @@ router.post("/my-profile/edit", (req, res, next) => {
 });
 
 /* POST user personal profile deletion */
-router.post("/my-profile/delete", (req, res) => {
+router.post("/my-profile/delete", isLoggedIn, (req, res) => {
   const userId = req.session.user._id;
   User.findByIdAndDelete(userId)
     .then(() => {
@@ -69,12 +71,12 @@ router.post("/my-profile/delete", (req, res) => {
 });
 
 /* GET user goodbye page */
-router.get("/goodbye", (req, res, next) => {
+router.get("/goodbye", isLoggedIn, (req, res, next) => {
   res.render("user/goodbye", { user: req.session.user });
 });
 
 /* GET other user profile */
-router.get("/profile/:userId", (req, res, next) => {
+router.get("/profile/:userId", isLoggedIn, (req, res, next) => {
   // Here we check if the user with given username exists
   const userId = req.params.userId;
   User.findById(userId).then((thisUser) => {
@@ -90,7 +92,7 @@ router.get("/profile/:userId", (req, res, next) => {
 });
 
 /* GET user personal friends page */
-router.get("/my-friends", (req, res, next) => {
+router.get("/my-friends", isLoggedIn, (req, res, next) => {
   User.findById(req.session.user._id)
     .populate([
       // { path: "friends", model: "User" },
@@ -108,7 +110,7 @@ router.get("/my-friends", (req, res, next) => {
 });
 
 /* GET user invites another user to friends */
-router.get("/profile/:userId/invitation-sent", (req, res, next) => {
+router.get("/profile/:userId/invitation-sent", isLoggedIn, (req, res, next) => {
   const invitedUser = req.params.userId;
   const invitingUser = req.session.user._id;
   User.findByIdAndUpdate(
@@ -125,6 +127,100 @@ router.get("/profile/:userId/invitation-sent", (req, res, next) => {
       res.redirect("/user/my-friends");
       return;
     });
+  });
+});
+
+/* GET user accepts an invitation from another user */
+router.get("/my-friends/accept/:userId", isLoggedIn, (req, res, next) => {
+  const newFriend = req.params.userId;
+  const loggedUser = req.session.user._id;
+  User.findByIdAndUpdate(
+    newFriend,
+    { $addToSet: { friends: loggedUser } },
+    { new: true }
+  ).then(() => {
+    User.findByIdAndUpdate(
+      newFriend,
+      { $pull: { pendingInvitations: loggedUser } },
+      { new: true }
+    ).then(() => {
+      User.findByIdAndUpdate(
+        loggedUser,
+        { $addToSet: { friends: newFriend } },
+        { new: true }
+      ).then(() => {
+        User.findByIdAndUpdate(
+          loggedUser,
+          { $pull: { receivedInvitations: newFriend } },
+          { new: true }
+        ).then((loggedUser) => {
+          console.log("Updated logged user: ", loggedUser);
+          res.redirect("/user/my-friends");
+          return;
+        });
+      });
+    });
+  });
+});
+
+/* GET user rejects an invitation from another user */
+router.get("/my-friends/reject/:userId", isLoggedIn, (req, res, next) => {
+  const rejectedFriend = req.params.userId;
+  const loggedUser = req.session.user._id;
+  User.findByIdAndUpdate(
+    rejectedFriend,
+    { $pull: { pendingInvitations: loggedUser } },
+    { new: true }
+  ).then(() => {
+    User.findByIdAndUpdate(
+      loggedUser,
+      { $pull: { receivedInvitations: rejectedFriend } },
+      { new: true }
+    ).then((loggedUser) => {
+      console.log("Updated logged user: ", loggedUser);
+      res.redirect("/user/my-friends");
+      return;
+    });
+  });
+});
+
+/* GET user removes another user from friends */
+router.get("/my-friends/remove/:userId", isLoggedIn, (req, res, next) => {
+  const removedFriend = req.params.userId;
+  const loggedUser = req.session.user._id;
+  User.findByIdAndUpdate(
+    removedFriend,
+    { $pull: { friends: loggedUser } },
+    { new: true }
+  ).then(() => {
+    User.findByIdAndUpdate(
+      loggedUser,
+      { $pull: { friends: removedFriend } },
+      { new: true }
+    ).then((loggedUser) => {
+      console.log("Updated logged user: ", loggedUser);
+      res.redirect("/user/my-friends");
+      return;
+    });
+  });
+});
+
+/* POST user searches for friends by username of fullname */
+router.get("/my-friends/search", isLoggedIn, (req, res, next) => {
+  const searchQuery = req.query;
+  console.log("This is searchQuery: ", searchQuery);
+  console.log("This is searchQuery: ", searchQuery.search);
+  User.findOne({ username: searchQuery.search }).then((foundUser) => {
+    if (!foundUser) {
+      User.findOne({ fullname: searchQuery.search }).then((foundUser) => {
+        if (!foundUser) {
+          res.redirect("/user/my-friends");
+          console.log("User not found. Your friends are not here yet!");
+        }
+      });
+    }
+    res.redirect(`/user/profile/${foundUser._id}`);
+    return;
   });
 });
 

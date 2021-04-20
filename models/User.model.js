@@ -24,11 +24,6 @@ const userSchema = new Schema({
     match: [/^\S+@\S+\.\S+$/, "Please use a valid email address."],
     lowercase: true,
   },
-  privacy: {
-    type: String,
-    required: false,
-    enum: ["public", "private"],
-  },
   location: String,
   favouriteMovie: String,
   favouriteBook: String,
@@ -36,14 +31,15 @@ const userSchema = new Schema({
   profilePicture: {
     type: String,
   },
-  colorMode: {
-    type: String,
-    default: "blue",
-    enum: ["blue", "green", "orange"],
-  },
-  friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  pendingInvitations: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  pendingInvitations: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      default: "607f0a11230786001554e307",
+    },
+  ],
   receivedInvitations: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
 const User = model("User", userSchema);
