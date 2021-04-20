@@ -1,0 +1,46 @@
+<h1>My friends</h1>
+
+<div>
+  <div class="search-friends">
+    <h4>Look for new friends</h4>
+    <p>Type a user name or full name to find your friends!</p>
+    <input type="search">
+    <button type="submit">Search!</button>
+  </div>
+
+  <!--Invitations received from other users waiting for your response-->
+  <div id="received-invit" class="friends-div">
+    <h2>Received invitations</h2>
+    <p>Here you can see who invited you to their friends circle.
+      Accept or reject the invitation.</p><br>
+    {{#each user.receivedInvitations}}
+    <h4>{{ this.username }}</h4>
+    <p>{{ this.fullname }}</p>
+    <img class="friends-pic" src="{{ this.profilePicture }}">
+    {{/each}}
+  </div>
+
+  <!--Invitations sent to other users and waiting for their response-->
+  <div id="pending-invit" class="friends-div">
+    <h2>Pending invitations</h2>
+    <p>Here you can see the invitations that your have sent to other users.</p><br>
+    {{#each user.pendingInvitations}}
+    <h4>{{ this.username }}</h4>
+    <p>{{ this.fullname }}</p>
+    <img class="friends-pic" src="{{ this.profilePicture }}">
+    {{/each}}
+  </div>
+
+  <!--Your friends circle-->
+  <div id="friends-circle" class="friends-div">
+    <h2>Your friends</h2>
+    <p>And here are all your friends... not a popular type, are you?</p><br>
+    {{#each user.friends}}
+    <h4>{{ this.username }}</h4>
+    <p>{{ this.fullname }}</p>
+    <img class="friends-pic" src="{{ this.profilePicture }}">
+    {{/each}}
+  </div>
+
+
+</div>

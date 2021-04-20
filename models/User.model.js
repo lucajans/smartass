@@ -41,7 +41,9 @@ const userSchema = new Schema({
     default: "blue",
     enum: ["blue", "green", "orange"],
   },
-  friends: [String],
+  friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  pendingInvitations: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  receivedInvitations: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
 const User = model("User", userSchema);

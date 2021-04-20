@@ -2,14 +2,15 @@
 
 {{#if user}}
 
-<div id="user-profile">
+<div class="userProfile">
   <div class="profile-background"></div>
   <div class="profile-picture">
-    <img src="{{ user.profilePicture }}" alt="Profile picture">
+    <img src="{{ user.profilePicture }}" alt="Profile picture" class="myProfilePicture">
+    <h1 class="profileUsername">{{ user.username }}</h1>
   </div>
 
-  <div id="user-data">
-    <h1>{{ user.username }}</h1>
+  <div class="userData">
+
 
     <h4>Username: {{ user.username }}</h4>
     <h4>Full Name: {{ user.fullname }}</h4>
