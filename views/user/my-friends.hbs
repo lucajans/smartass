@@ -42,6 +42,8 @@
     {{#each user.friends}}
     <h4>{{ this.username }}</h4>
     <p>{{ this.fullname }}</p>
+    <button type="submit" class="my-friends btn" id="review btn">
+      <a href="/user/profile/{{this._id}}">Review</a></button>
     <button type="submit" class="my-friends btn" id="remove btn">
       <a href="/user/my-friends/remove/{{this._id}}">Remove</a></button>
     {{/each}}

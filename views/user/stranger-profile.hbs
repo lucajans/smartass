@@ -21,28 +21,17 @@
 
   <div class="button-div">
     <button type="submit" id="see-goals-btn">Check out progress</button>
-    <button type="submit" id="add-friends-btn"><a href="/user/profile/{{thisUser._id}}/invitation-sent">Invite to
+    <button type="submit" id="add-friends-btn"><a href="/user/profile/{{ thisUser._id }}/invitation-sent">Invite to
         friends</a></button>
   </div>
 
   <div class="users-friends">
     <h2 class="profile-subtitle">Friends</h2>
     <div class="user-images">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture"><br>
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture"><br>
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
+      {{#each thisUser.friends}}
+      <h4>{{ this.username }}</h4>
+      <p>{{ this.fullname }}</p>
+      {{/each}}
     </div>
   </div>
 

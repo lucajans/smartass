@@ -15,17 +15,17 @@
 
   <div id="user-data-edit">
 
-    <form id="profile-edit" method="POST" action="/user/my-profile/edit">
+    <form id="profile-edit" method="POST" action="/user/my-profile/edit" enctype="multipart/form-data">
       <label for="username">Username</label>
       <input type="text" name="username" id="username" value="{{ user.username }}"><br>
 
       <label for="fullname">Full name</label>
       <input type="text" name="fullname" id="fullname" value="{{ user.fullname }}"><br>
 
-      <label for="profilePicture">Profile picture</label>
-      <input type="text" name="profilePicture" id="profilePicture" value="{{ user.profilePicture }}"><br>
+      <label for="image">Profile picture</label>
+      <input type="file" name="image" id="profile-image" default="{{ user.profilePicture }}"><br>
 
-      <label for="email">E-mail</label>
+      <label for=" email">E-mail</label>
       <input type="email" name="email" id="email" value="{{ user.email }}"><br>
 
       <label for="location">Location</label>
