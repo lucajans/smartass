@@ -26,17 +26,27 @@ router.post("/createGoal", (req, res) => {
 });
 
 // update goal
-router.post("/user/:goalId/edit", (req, res, next) => {
+router.get("/user/goals/:goalId/edit", (req, res) => {
+  res.render("update-goal", { user: req.session.user });
+});
+
+router.post("/user/goals/:goalId/edit", (req, res, next) => {
   const { goalName, category, goalNumber, startDate, endDate } = req.body;
-  Goal.findByIdAndUpdate(req.params._id, {
-    goalName: goalName,
-    category: category,
-    goalNumber: goalNumber,
-    startDate: startDate,
-    endDate: endDate,
-  })
+  Goal.findByIdAndUpdate(
+    req.params._id,
+    {
+      goalName: goalName,
+      category: category,
+      goalNumber: goalNumber,
+      startDate: startDate,
+      endDate: endDate,
+    },
+    { new: true }
+  )
     .then((editedGoal) => {
-      res.redirect("/user/dashboard");
+      // req.params = editedGoal;
+      console.log(editedGoal);
+      res.redirect(`/user/goals/${editedGoal._id}`);
     })
     .catch((err) => {
       console.log("We could not process this change. Run!: ", err);
@@ -44,7 +54,7 @@ router.post("/user/:goalId/edit", (req, res, next) => {
 });
 
 //remove goal
-router.get("/user/goal/:goalId", (req, res) => {
+router.get("/user/goals/:goalId", (req, res) => {
   const { goalId } = req.params;
   Goal.findByIdAndDelete(goalId)
     .then(() => {
