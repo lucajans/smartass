@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
-
 const isLoggedIn = require("../middleware/isLoggedIn");
+const parser = require("../config/cloudinary");
 
 /* GET user personal profile page */
 router.get("/my-profile", isLoggedIn, (req, res, next) => {
@@ -14,47 +14,52 @@ router.get("/my-profile/edit", isLoggedIn, (req, res, next) => {
 });
 
 /* POST user personal profile edition page */
-router.post("/my-profile/edit", isLoggedIn, (req, res, next) => {
-  console.log("User data after edition: ", req.body);
-  const {
-    username,
-    fullname,
-    profilePicture,
-    email,
-    location,
-    description,
-    favouriteBook,
-    favouriteMovie,
-    privacy,
-    colorMode,
-  } = req.body;
+router.post(
+  "/my-profile/edit",
+  isLoggedIn,
+  parser.single("image"),
+  (req, res, next) => {
+    console.log(req.file);
+    const profilePicture = req.file.path;
+    const {
+      username,
+      fullname,
+      email,
+      location,
+      description,
+      favouriteBook,
+      favouriteMovie,
+      privacy,
+      colorMode,
+    } = req.body;
 
-  User.findByIdAndUpdate(
-    req.session.user._id, // the id of logged user (we use to identify the user whose data we update)
-    {
-      username: username,
-      fullname: fullname,
-      profilePicture: profilePicture,
-      email: email,
-      location: location,
-      description: description,
-      favouriteBook: favouriteBook,
-      favouriteMovie: favouriteMovie,
-      privacy: privacy,
-      colorMode: colorMode,
-    },
-    { new: true }
-  )
-    .then((updatedUser) => {
-      // Everything went fine, the user data got updated! Bravo!
-      console.log("Updated user: ", updatedUser);
-      req.session.user = updatedUser;
-      res.redirect("/user/my-profile");
-    })
-    .catch((err) => {
-      console.log("We have an error with saving the edited user: ", err);
-    });
-});
+    User.findByIdAndUpdate(
+      req.session.user._id, // the id of logged user (we use to identify the user whose data we update)
+      {
+        username: username,
+        fullname: fullname,
+        profilePicture: profilePicture,
+        email: email,
+        location: location,
+        description: description,
+        favouriteBook: favouriteBook,
+        favouriteMovie: favouriteMovie,
+        privacy: privacy,
+        colorMode: colorMode,
+      },
+      { new: true }
+    )
+      .then((updatedUser) => {
+        // Everything went fine, the user data got updated! Bravo!
+        console.log("Updated user: ", updatedUser);
+        req.session.user = updatedUser;
+        res.redirect("/user/my-profile");
+      })
+      .catch((err) => {
+        console.log("We have an error with saving the edited user: ", err);
+      });
+  }
+);
 
 /* POST user personal profile deletion */
 router.post("/my-profile/delete", isLoggedIn, (req, res) => {
