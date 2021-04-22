@@ -84,16 +84,21 @@ router.get("/goodbye", isLoggedIn, (req, res, next) => {
 router.get("/profile/:userId", isLoggedIn, (req, res, next) => {
   // Here we check if the user with given username exists
   const userId = req.params.userId;
-  User.findById(userId).then((thisUser) => {
-    console.log("We found this user: ", thisUser);
-    if (!thisUser) {
-      console.log("This user doesn't exist.");
-      return res.redirect("/");
-    }
-
-    // By now we know that the user exists. Here we get the information we need.
-    res.render("user/stranger-profile-public", { thisUser });
-  });
+  User.findById(userId)
+    .populate("friends")
+    .then((thisUser) => {
+      console.log("We found this user: ", thisUser);
+      if (!thisUser) {
+        console.log("This user doesn't exist.");
+        return res.redirect("/user/my-friends");
+      }
+      if (
+        thisUser.friends.find((el) => el.username === req.session.user.username)
+      ) {
+        return res.render("user/friend-profile", { thisUser });
+      }
+      res.render("user/stranger-profile", { thisUser });
+    });
 });
 
 /* GET user personal friends page */

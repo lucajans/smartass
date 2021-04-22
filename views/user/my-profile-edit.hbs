@@ -23,9 +23,9 @@
       <input type="text" name="fullname" id="fullname" value="{{ user.fullname }}"><br>
 
       <label for="image">Profile picture</label>
-      <input type="file" name="image" id="profile-image"><br>
+      <input type="file" name="image" id="profile-image" default="{{ user.profilePicture }}"><br>
 
-      <label for="email">E-mail</label>
+      <label for=" email">E-mail</label>
       <input type="email" name="email" id="email" value="{{ user.email }}"><br>
 
       <label for="location">Location</label>
