@@ -3,25 +3,49 @@ body {
   margin: 0 auto 0 auto;
 }
 
-a {
-  color: #00b7ff;
-}
-
 h1 {
-  color: 15px;
+  font-size: 80px;
 }
 
-#signup {
+h2 {
+  font-size: 50px;
+}
+
+/* signup page */
+
+.auth {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#signup form {
+.auth-title {
+  margin-top: 120px;
+}
+
+.auth-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.auth-form input {
+  padding: 5px;
+  margin: 5px;
+}
+
+.auth-btn {
+  padding: 10px 30px;
+  margin-top: 20px;
+  background-color: #2a2d93;
+  color: #fbb238;
+  font-weight: 500;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  border: none;
+  border-radius: 3px;
+}
+
+/* create goal page */
 
 #create-goal {
   display: flex;
@@ -144,21 +168,24 @@ progress[value]::-webkit-progress-value {
 /* ALEKSANDRA */
 
 /* layout */
+
 #main-nav {
   width: 100%;
-  height: 3vw;
-  background-color: #6b8e23;
-  color: #eee8aa;
+  height: 30px;
+  background-color: #fbb238;
+  color: #2a2d93;
   padding-left: 20px;
   padding-top: 10px;
   margin: 0;
 }
 
 #main-nav a {
-  color: #eee8aa;
+  color: #2a2d93;
+  text-decoration: none;
 }
 
 /* My profile/edit */
+
 .userProfile {
   position: relative;
   width: auto;
@@ -197,4 +224,18 @@ progress[value]::-webkit-progress-value {
   width: 5px;
 }
 
-/*# sourceMappingURL=style.css.map */
+/* Home page */
+
+#title-home {
+  text-align: center;
+  margin-top: 150px;
+}
+
+#visual-home-div {
+  display: flex;
+  justify-content: center;
+}
+
+#visual-home {
+  width: 300px;
+}
