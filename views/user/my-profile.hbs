@@ -4,29 +4,30 @@
 
 <div class="userProfile">
   <div class="profile-background"></div>
+  <h1 class="profileUsername">{{ user.username }}</h1>
   <div class="profile-picture">
     <img src="{{ user.profilePicture }}" alt="Profile picture" class="myProfilePicture">
-    <h1 class="profileUsername">{{ user.username }}</h1>
   </div>
 
   <div class="userData">
 
-
-    <h4>Username: {{ user.username }}</h4>
-    <h4>Full Name: {{ user.fullname }}</h4>
-    <h4>Email: {{ user.email }}</h4>
-    <h4>Location: {{ user.location }}</h4>
-    <h4>A short word about yourself: {{ user.description }}</h4>
-    <h4>Favourite book: {{ user.favouriteBook }}</h4>
-    <h4>Favourite movie: {{ user.favouriteMovie }}</h4>
+    <p>Username: {{ user.username }}</p>
+    <p>Full Name: {{ user.fullname }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Location: {{ user.location }}</p>
+    <p>A short word about yourself: {{ user.description }}</p>
+    <p>Favourite book: {{ user.favouriteBook }}</p>
+    <p>Favourite movie: {{ user.favouriteMovie }}</p>
     </h4>
   </div>
 
   <div class="user-btn">
-    <button type="submit" id="edit-profile"><a href="/user/my-profile/edit">Edit your profile</a></button><br>
+    <button type="submit" id="edit-profile" class="basic-btn"><a href="/user/my-profile/edit">Edit your
+        profile</a></button><br>
 
     <form method="POST" action="/user/my-profile/delete">
-      <button type="submit" id="delete-profile"><a href="/user/my-profile/delete"></a>Delete your profile</button>
+      <button type="submit" id="delete-profile" class="basic-btn"><a href="/user/my-profile/delete"></a>Delete your
+        profile</button>
     </form>
   </div>
 
