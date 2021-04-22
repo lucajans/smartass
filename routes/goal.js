@@ -33,17 +33,14 @@ router.get("/user/goals/:goalId/edit", (req, res) => {
 
 router.post("/user/goals/:goalId/edit", (req, res, next) => {
   const { goalName, category, goalNumber, startDate, endDate } = req.body;
-  Goal.findByIdAndUpdate(
-    req.params._id,
-    {
-      goalName: goalName,
-      category: category,
-      goalNumber: goalNumber,
-      startDate: startDate,
-      endDate: endDate,
-    },
-    { new: true }
-  )
+  const goalId = req.params;
+  Goal.findByIdAndUpdate(goalId, {
+    goalName: goalName,
+    category: category,
+    goalNumber: goalNumber,
+    startDate: startDate,
+    endDate: endDate,
+  })
     .then((editedGoal) => {
       // req.params = editedGoal;
       console.log(editedGoal);
