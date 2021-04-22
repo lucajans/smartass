@@ -4,8 +4,10 @@
   <div class="search-friends">
     <h4>Look for new friends</h4>
     <p>Type a user name or full name to find your friends!</p>
-    <input type="search">
-    <button type="submit">Search!</button>
+    <form action="/user/my-friends/search" method="GET">
+      <input type="text" name="search">
+      <button type="submit">Search!</button>
+    </form>
   </div>
 
   <!--Invitations received from other users waiting for your response-->
@@ -16,18 +18,20 @@
     {{#each user.receivedInvitations}}
     <h4>{{ this.username }}</h4>
     <p>{{ this.fullname }}</p>
-    <img class="friends-pic" src="{{ this.profilePicture }}">
+    <button type="submit" class="my-friends btn" id="accept btn">
+      <a href="/user/my-friends/accept/{{this._id}}">Accept</a></button>
+    <button type="submit" class="my-friends btn" id="reject btn">
+      <a href="/user/my-friends/reject/{{this._id}}">Reject</a></button>
     {{/each}}
   </div>
 
   <!--Invitations sent to other users and waiting for their response-->
-  <div id="pending-invit" class="friends-div">
+  <div id=" pending-invit" class="friends-div">
     <h2>Pending invitations</h2>
     <p>Here you can see the invitations that your have sent to other users.</p><br>
     {{#each user.pendingInvitations}}
     <h4>{{ this.username }}</h4>
     <p>{{ this.fullname }}</p>
-    <img class="friends-pic" src="{{ this.profilePicture }}">
     {{/each}}
   </div>
 
@@ -38,7 +42,10 @@
     {{#each user.friends}}
     <h4>{{ this.username }}</h4>
     <p>{{ this.fullname }}</p>
-    <img class="friends-pic" src="{{ this.profilePicture }}">
+    <button type="submit" class="my-friends btn" id="review btn">
+      <a href="/user/profile/{{this._id}}">Review</a></button>
+    <button type="submit" class="my-friends btn" id="remove btn">
+      <a href="/user/my-friends/remove/{{this._id}}">Remove</a></button>
     {{/each}}
   </div>
 

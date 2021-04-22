@@ -14,8 +14,6 @@
     <h4>A short word about yourself: {{ thisUser.description }}</h4>
     <h4>Favourite book: {{ thisUser.favouriteBook }}</h4>
     <h4>Favourite movie: {{ thisUser.favouriteMovie }}</h4>
-    <h4>Privacy of your profile: {{ thisUser.privacy }}</h4>
-    <h4>Current color palette: <div style="color: {{ thisUser.colorMode }}">COLOR CIRCLE</div>
     </h4>
   </div>
 
@@ -27,21 +25,10 @@
   <div class="users-friends">
     <h2 class="profile-subtitle">Friends</h2>
     <div class="user-images">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture"><br>
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture"><br>
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
-      <img url="" alt="profile picture">
+      {{#each thisUser.friends}}
+      <h4>{{ this.username }}</h4>
+      <p>{{ this.fullname }}</p>
+      {{/each}}
     </div>
   </div>
 
