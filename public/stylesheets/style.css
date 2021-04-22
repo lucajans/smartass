@@ -78,7 +78,7 @@ progress[value]::-webkit-progress-value {
     5px 5px hsl(50, 50%, 33%), 6px 6px hsl(50, 50%, 32%),
     7px 7px hsl(50, 50%, 31%), 8px 8px hsl(50, 50%, 30%),
     9px 9px hsl(50, 50%, 29%), 10px 10px hsl(50, 50%, 28%),
-    10px 10px 30px rgba(0, 0, 0, 0.7);
+    10px 10px 30px rgba(0, 0, 0, 0);
 }
 
 #goalCategory {
@@ -103,12 +103,42 @@ progress[value]::-webkit-progress-value {
   letter-spacing: 15px;
   text-transform: uppercase;
   transform: rotate(-10deg);
-  text-shadow: 1px 1px hsl(125, 50%, 45%), 2px 2px hsl(125, 50%, 40%),
+  text-shadow: 1px 1px hsl(116, 50%, 45%), 2px 2px hsl(116, 50%, 40%),
     3px 3px hsl(128, 50%, 35%), 4px 4px hsl(128, 50%, 34%),
     5px 5px hsl(131, 50%, 33%), 6px 6px hsl(131, 50%, 32%),
     7px 7px hsl(134, 50%, 31%), 8px 8px hsl(134, 50%, 30%),
     9px 9px hsl(137, 50%, 29%), 10px 10px hsl(137, 50%, 28%),
-    10px 10px 30px rgba(0, 0, 0, 0.7);
+    10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#theCurrentNumber {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px hsl(255, 50%, 45%), 2px 2px hsl(255, 50%, 40%),
+    3px 3px hsl(258, 50%, 35%), 4px 4px hsl(258, 50%, 34%),
+    5px 5px hsl(261, 50%, 33%), 6px 6px hsl(261, 50%, 32%),
+    7px 7px hsl(264, 50%, 31%), 8px 8px hsl(264, 50%, 30%),
+    9px 9px hsl(267, 50%, 29%), 10px 10px hsl(267, 50%, 28%),
+    10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#thePercentage {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px hsl(355, 50%, 45%), 2px 2px hsl(355, 50%, 40%),
+    3px 3px hsl(358, 50%, 35%), 4px 4px hsl(358, 50%, 34%),
+    5px 5px hsl(361, 50%, 33%), 6px 6px hsl(361, 50%, 32%),
+    7px 7px hsl(364, 50%, 31%), 8px 8px hsl(364, 50%, 30%),
+    9px 9px hsl(367, 50%, 29%), 10px 10px hsl(367, 50%, 28%),
+    10px 10px 30px rgba(0, 0, 0, 0);
 }
 
 /* ALEKSANDRA */
