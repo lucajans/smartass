@@ -57,7 +57,7 @@ router.post("/user/goals/:goalId/edit", isLoggedIn, (req, res, next) => {
     .then((editedGoal) => {
       // req.params = editedGoal;
       console.log(editedGoal);
-      res.render("user-goal", { goal: editedGoal });
+      res.render("user-goal", { user: req.session.user, goal: editedGoal });
     })
     .catch((err) => {
       console.log("We could not process this change. Run!: ", err);
