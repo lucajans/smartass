@@ -1,11 +1,11 @@
-<form action="/user/goal/{{this.goalId}}/edit" method="POST" id="update-goal">
+<form action="/user/goals/{{goal._id}}/edit" method="POST" id="update-goal">
     <div>
         <label for="goalName"> Give your goal a cool name: </label>
-        <input type="text" id="goalName" name="goalName" value="{{this.goalName}}" />
+        <input type="text" id="goalName" name="goalName" value="{{goal.goalName}}" />
     </div>
     <div>
         <label for="category"> Goal category </label>
-        <select name="category" id="category" value="{{this.category}}" />
+        <select name="category" id="category" value="{{goal.category}}" />
         <option value="" disabled selected hidden>Choose a category</option>
         <option value="books">Books</option>
         <option value="movies">Movies</option>
@@ -21,13 +21,11 @@
     </div>
     <div>
         <label for="startDate"> Start date </label>
-        <input type="date" id="startDate" name="startDate" />
+        <input type="date" id="startDate" name="startDate" value="{{goal.startDate}}" />
     </div>
     <div>
         <label for="endDate"> End date </label>
-        <input type="date" id="endDate" name="endDate" />
+        <input type="date" id="endDate" name="endDate" value="{{goal.endDate}}" />
     </div>
-    <div>
-        <button type="submit">Submit goal</button>
-    </div>
+    <button type="submit">Submit goal</button>
 </form>

@@ -115,7 +115,7 @@ router.post("/login", (req, res, next) => {
     }
     // Here we know the login is successfull!
     req.session.user = foundUser;
-    res.redirect("/user/my-profile");
+    res.redirect("/user/dashboard");
     console.log(req.session.user);
   });
 });

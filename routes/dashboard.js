@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Goal = require("../models/Goal.model");
 const User = require("../models/User.model");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get(
   "/user/dashboard",
+  isLoggedIn,
   /** user must be loggedin, */ (req, res, next) => {
     Goal.find({})
       //   Goal.find({owner: req.session.user._id})
@@ -30,7 +32,7 @@ router.get(
   }
 );
 
-router.get("/user/goals/:goalId", (req, res, next) => {
+router.get("/user/goals/:goalId", isLoggedIn, (req, res, next) => {
   Goal.findById(req.params.goalId)
     .then((foundGoal) => {
       const percentage = (foundGoal.currentNumber / foundGoal.goalNumber) * 100;
@@ -47,7 +49,7 @@ router.get("/user/goals/:goalId", (req, res, next) => {
     });
 });
 
-router.get("/user/goals/:goalId/progress", (req, res, next) => {
+router.get("/user/goals/:goalId/progress", isLoggedIn, (req, res, next) => {
   const { goalId } = req.params;
   Goal.findByIdAndUpdate(goalId, { $inc: { currentNumber: 1 } }).then(
     (progressGoal) => {
