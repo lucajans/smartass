@@ -222,9 +222,9 @@ router.get("/my-friends/search", isLoggedIn, (req, res, next) => {
   console.log("This is searchQuery: ", searchQuery.search);
   User.findOne({ username: searchQuery.search }).then((foundUser) => {
     if (!foundUser) {
-      User.findOne({ fullname: searchQuery.search }).then((foundUser) => {
+      User.findOne({ email: searchQuery.search }).then((foundUser) => {
         if (!foundUser) {
-          res.redirect("/user/my-friends");
+          return res.redirect("/user/my-friends");
           console.log("User not found. Your friends are not here yet!");
         }
       });

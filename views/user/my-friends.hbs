@@ -1,53 +1,64 @@
-<h1>My friends</h1>
+<div class="my-friends">
+  <h2>My friends</h2>
 
-<div>
   <div class="search-friends">
     <h4>Look for new friends</h4>
-    <p>Type a user name or full name to find your friends!</p>
+    <p>Type a user name or email to find your friends!</p>
     <form action="/user/my-friends/search" method="GET">
       <input type="text" name="search">
-      <button type="submit">Search!</button>
+      <button type="submit" class="basic-btn">Search!</button>
     </form>
   </div>
 
   <!--Invitations received from other users waiting for your response-->
   <div id="received-invit" class="friends-div">
-    <h2>Received invitations</h2>
+    <h4>Received invitations</h4>
     <p>Here you can see who invited you to their friends circle.
       Accept or reject the invitation.</p><br>
-    {{#each user.receivedInvitations}}
-    <h4>{{ this.username }}</h4>
-    <p>{{ this.fullname }}</p>
-    <button type="submit" class="my-friends btn" id="accept btn">
-      <a href="/user/my-friends/accept/{{this._id}}">Accept</a></button>
-    <button type="submit" class="my-friends btn" id="reject btn">
-      <a href="/user/my-friends/reject/{{this._id}}">Reject</a></button>
-    {{/each}}
-  </div>
+    <div class="friends-gallery">
+      {{#each user.receivedInvitations}}
+      <div class="single-friend-profile">
+        <img class="profile-pic-friend" src="{{ this.profilePicture }}">
+        <p class="username"><a href="/user/profile/{{ this._id}}">{{ this.username }}</a></p>
+        <p class="fullname">{{ this.fullname }}</p>
+        <button type="submit" class="basic-btn friends-btn" id="accept-btn">
+          <a href="/user/my-friends/accept/{{this._id}}">Accept</a></button>
+        <button type="submit" class="basic-btn friends-btn" id="reject-btn">
+          <a href="/user/my-friends/reject/{{this._id}}">Reject</a></button>
+      </div>
+      {{/each}}
+    </div>
 
-  <!--Invitations sent to other users and waiting for their response-->
-  <div id=" pending-invit" class="friends-div">
-    <h2>Pending invitations</h2>
-    <p>Here you can see the invitations that your have sent to other users.</p><br>
-    {{#each user.pendingInvitations}}
-    <h4>{{ this.username }}</h4>
-    <p>{{ this.fullname }}</p>
-    {{/each}}
-  </div>
+    <!--Invitations sent to other users and waiting for their response-->
+    <div id="pending-invit" class="friends-div">
+      <h4>Pending invitations</h4>
+      <p>Here you can see the invitations that your have sent to other users.</p><br>
+      <div class="friends-gallery">
+        {{#each user.pendingInvitations}}
+        <div class="single-friend-profile">
+          <img class="profile-pic-friend" src="{{ this.profilePicture }}">
+          <p class="username"><a href="/user/profile/{{ this._id}}">{{ this.username }}</a></p>
+          <p class="fullname">{{ this.fullname }}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
 
-  <!--Your friends circle-->
-  <div id="friends-circle" class="friends-div">
-    <h2>Your friends</h2>
-    <p>And here are all your friends... not a popular type, are you?</p><br>
-    {{#each user.friends}}
-    <h4>{{ this.username }}</h4>
-    <p>{{ this.fullname }}</p>
-    <button type="submit" class="my-friends btn" id="review btn">
-      <a href="/user/profile/{{this._id}}">Review</a></button>
-    <button type="submit" class="my-friends btn" id="remove btn">
-      <a href="/user/my-friends/remove/{{this._id}}">Remove</a></button>
-    {{/each}}
-  </div>
+    <!--Your friends circle-->
+    <div id="friends-circle" class="friends-div">
+      <h4>Your friends</h4>
+      <p>And here are all your friends... not a popular type, are you?</p><br>
+      <div class="friends-gallery">
+        {{#each user.friends}}
+        <div class="single-friend-profile">
+          <img class="profile-pic-friend" src="{{ this.profilePicture }}">
+          <p class="username"><a href="/user/profile/{{ this._id}}">{{ this.username }}</a></p>
+          <p class="fullname">{{ this.fullname }}</p>
+          <button type="submit" class="basic-btn friends-btn" id="remove-btn">
+            <a href="/user/my-friends/remove/{{this._id}}">Remove</a></button>
+        </div>
+        {{/each}}
+      </div>
 
 
-</div>
+    </div>
