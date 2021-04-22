@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Goal = require("../models/Goal.model");
+const User = require("../models/User.model");
 
 router.get(
   "/user/dashboard",
@@ -18,7 +19,10 @@ router.get(
             percentage,
           };
         });
-        res.render("dashboard", { dashboardGoals: withProgress });
+        res.render("dashboard", {
+          dashboardGoals: withProgress,
+          user: req.session.user,
+        });
       })
       .catch((err) => {
         console.log("Error while loading the goals", err);
@@ -36,7 +40,7 @@ router.get("/user/goals/:goalId", (req, res, next) => {
       };
     })
     .then((foundGoal) => {
-      res.render("user-goal", { goal: foundGoal });
+      res.render("user-goal", { goal: foundGoal, user: req.session.user });
     })
     .catch((error) => {
       console.log("Error while retrieving goal details: ", error);

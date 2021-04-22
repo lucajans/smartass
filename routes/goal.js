@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Goal = require("../models/Goal.model");
+const User = require("../models/User.model");
 
 router.get("/createGoal", (req, res) => {
-  res.render("create-goal");
+  res.render("create-goal", { user: req.session.user });
 });
 
 // must be logged in
@@ -54,7 +55,7 @@ router.post("/user/goals/:goalId/edit", (req, res, next) => {
 });
 
 //remove goal
-router.get("/user/goals/:goalId", (req, res) => {
+router.get("/user/goals/:goalId/byebye", (req, res) => {
   const { goalId } = req.params;
   Goal.findByIdAndDelete(goalId)
     .then(() => {
