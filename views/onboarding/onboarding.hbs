@@ -1,4 +1,4 @@
-<div>
+<div class="page">
   <div id="visual-onboard">
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Books_Flat_Icon_Vector.svg/691px-Books_Flat_Icon_Vector.svg.png"
@@ -7,15 +7,15 @@
 
   <div class="text-middle" id="text-onboard">
     {{#if user}}
-    <h2>Welcome to smartass, {{user.username}}!</h2>
+    <h2 class="page-title">Welcome to smartass, {{user.username}}!</h2>
     {{/if}}
-    <p>Follow the checklist to get yourself started! Or if you think
+    <h4>Follow the checklist to get yourself started! Or if you think
       you’re better than that, skip the onboarding. Whatever.
-    </p>
+      </h2>
   </div>
 
   <div class="btn-onboard">
-    <button type="submit"><a href="/onboarding/step-1">Let's start!</a></button>
-    <button type="submit"><a href="/user/dashboard">Skip!</a></button>
+    <button type="submit" class="basic-btn"><a href="/onboarding/step-1">Let's start!</a></button>
+    <button type="submit" class="basic-btn"><a href="/user/dashboard">Skip!</a></button>
   </div>
 </div>

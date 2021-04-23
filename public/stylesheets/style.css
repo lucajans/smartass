@@ -75,6 +75,7 @@ select {
   color: #2a2d93;
   text-decoration: none;
 }
+
 /* GENERAL VIEWS */
 
 /* Home page */
@@ -403,3 +404,5 @@ progress[value]::-webkit-progress-value {
 .page-title span {
   font-weight: lighter;
 }
+
+/* ONBOARDING VIEWS */
