@@ -1,29 +1,31 @@
-<h1>Goal specifics</h1>
+<div class="goal-details">
+    <div>
+        <p>Your goal is:<br>
+            <span id="theGoalName">{{goal.goalName}}</span>
+        </p>
+    </div>
 
-<div>
-    <p>Your goal is:<br>
-        <span id="theGoalName">{{goal.goalName}}</span>
-    </p>
+    <div>
+        <p>It is all about them: <br>
+            <span id="goalCategory">{{goal.category}}</span>
+        </p>
+    </div>
+
+    <div>
+        <p>Your goal was to do <span id="theGoalNumber">{{goal.goalNumber}}</span> before <span
+                id="endDate">{{goal.endDate}}</span>!</p>
+    </div>
+
+    <div>
+        <p>You are currently at <span id="theCurrentNumber">{{goal.currentNumber}}</span>, which means you have
+            finished
+            <span id="thePercentage">{{goal.percentage}} %</span>!
+        </p>
+    </div>
+
+    <button class="basic-btn"><a href="/user/dashboard">Back to dashboard</a></button>
+    <button class="basic-btn"><a href="/user/goals/{{goal._id}}/edit">Edit your goal</a></button>
+    <button class="basic-btn" id="remove-goal-btn"><a href="/user/goals/{{goal._id}}/byebye">Remove your
+            goal</a></button>
+
 </div>
-
-<div>
-    <p>It is all about them: <br>
-        <span id="goalCategory">{{goal.category}}</span>
-    </p>
-</div>
-
-<div>
-    <p>Your goal was to do <span id="theGoalNumber">{{goal.goalNumber}}</span> before <span
-            id="endDate">{{goal.endDate}}</span>!</p>
-</div>
-
-<div>
-    <p>You are currently at <span id="theCurrentNumber">{{goal.currentNumber}}</span>, which means you have
-        finished
-        <span id="thePercentage">{{goal.percentage}} %</span>!
-    </p>
-</div>
-
-<button><a href="/user/goals/{{goal._id}}/edit">Edit your goal</a></button>
-<button><a href="/user/goals/{{goal._id}}/byebye">Remove your goal</a></button>
-<button><a href="/user/dashboard">Return to your dashboard</a></button>

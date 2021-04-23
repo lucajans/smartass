@@ -1,3 +1,7 @@
+/* GLOBAL SETTINGS AND LAYOUT */
+
+/* global settings */
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0 auto 0 auto;
@@ -52,127 +56,6 @@ select {
   border-radius: 3px;
 }
 
-/* create goal page */
-
-#create-goal > div {
-  margin: 5px;
-}
-
-#goalName {
-  width: 300px;
-}
-
-/* XXX */
-
-#myProgress {
-  width: 60%;
-  background-color: rgb(5, 52, 77);
-}
-
-#myBar {
-  width: 10%;
-  height: 40px;
-  background-color: rgb(99, 187, 209);
-}
-
-#create-another-goal {
-  margin: 1em;
-}
-
-progress[value] {
-  width: 50vw;
-  height: 4vh;
-  -webkit-appearance: none;
-  appearance: inherit;
-}
-
-progress[value]::-webkit-progress-bar {
-  background-color: rgb(187, 231, 236);
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-}
-
-progress[value]::-webkit-progress-value {
-  background-color: rgb(48, 145, 206);
-}
-
-#theGoalName {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px hsl(50, 50%, 45%), 2px 2px hsl(50, 50%, 40%),
-    3px 3px hsl(50, 50%, 35%), 4px 4px hsl(50, 50%, 34%),
-    5px 5px hsl(50, 50%, 33%), 6px 6px hsl(50, 50%, 32%),
-    7px 7px hsl(50, 50%, 31%), 8px 8px hsl(50, 50%, 30%),
-    9px 9px hsl(50, 50%, 29%), 10px 10px hsl(50, 50%, 28%),
-    10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#goalCategory {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px hsl(191, 58%, 52%), 2px 2px hsl(191, 50%, 40%),
-    3px 3px hsl(203, 56%, 50%), 4px 4px hsl(203, 50%, 34%),
-    5px 5px hsl(207, 64%, 54%), 6px 6px hsl(207, 50%, 32%),
-    7px 7px hsl(210, 50%, 31%), 8px 8px hsl(210, 50%, 30%),
-    9px 9px hsl(213, 50%, 29%), 10px 10px hsl(213, 50%, 28%),
-    10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#theGoalNumber {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px hsl(116, 50%, 45%), 2px 2px hsl(116, 50%, 40%),
-    3px 3px hsl(128, 50%, 35%), 4px 4px hsl(128, 50%, 34%),
-    5px 5px hsl(131, 50%, 33%), 6px 6px hsl(131, 50%, 32%),
-    7px 7px hsl(134, 50%, 31%), 8px 8px hsl(134, 50%, 30%),
-    9px 9px hsl(137, 50%, 29%), 10px 10px hsl(137, 50%, 28%),
-    10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#theCurrentNumber {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px hsl(255, 50%, 45%), 2px 2px hsl(255, 50%, 40%),
-    3px 3px hsl(258, 50%, 35%), 4px 4px hsl(258, 50%, 34%),
-    5px 5px hsl(261, 50%, 33%), 6px 6px hsl(261, 50%, 32%),
-    7px 7px hsl(264, 50%, 31%), 8px 8px hsl(264, 50%, 30%),
-    9px 9px hsl(267, 50%, 29%), 10px 10px hsl(267, 50%, 28%),
-    10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#thePercentage {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px hsl(355, 50%, 45%), 2px 2px hsl(355, 50%, 40%),
-    3px 3px hsl(358, 50%, 35%), 4px 4px hsl(358, 50%, 34%),
-    5px 5px hsl(361, 50%, 33%), 6px 6px hsl(361, 50%, 32%),
-    7px 7px hsl(364, 50%, 31%), 8px 8px hsl(364, 50%, 30%),
-    9px 9px hsl(367, 50%, 29%), 10px 10px hsl(367, 50%, 28%),
-    10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-/* ALEKSANDRA */
-
 /* layout */
 
 #main-nav {
@@ -185,25 +68,14 @@ progress[value]::-webkit-progress-value {
   position: fixed;
   margin: 0;
   top: 0;
+  z-index: 10000;
 }
 
 #main-nav a {
   color: #2a2d93;
   text-decoration: none;
 }
-
-/* My profile/edit */
-
-.userProfile {
-  padding-left: 100px;
-}
-
-.myProfilePicture {
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
-  margin-top: 100px;
-}
+/* GENERAL VIEWS */
 
 /* Home page */
 
@@ -221,17 +93,71 @@ progress[value]::-webkit-progress-value {
   width: 300px;
 }
 
-/* Dashboard page */
+/* USER VIEWS */
 
-.dashboard {
-  text-align: center;
-  margin-top: 120px;
+/* my profile page */
+
+.userProfile {
+  padding-left: 100px;
 }
 
-.dashboard a {
-  text-align: center;
-  color: #fbb238;
-  text-decoration: none;
+.myProfilePicture {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  margin-top: 100px;
+}
+
+.profileUsername {
+  position: absolute;
+  top: 120px;
+  left: 420px;
+  text-align: left;
+}
+
+.user-btn {
+  position: absolute;
+  top: 250px;
+  left: 420px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-btn button {
+  margin: 30px 10px;
+}
+
+.userData {
+  position: absolute;
+  top: 380px;
+  left: 120px;
+  text-align: left;
+  padding-bottom: 100px;
+}
+
+.userData span {
+  font-weight: bold;
+}
+
+.userData h4 {
+  line-height: 20px;
+}
+
+.text {
+  width: 400px;
+  line-height: 25px;
+}
+
+/* My profile page – edit */
+
+#profile-edit input {
+  padding: 5px;
+  margin: 5px;
+}
+
+#profile-edit label {
+  font-size: 20px;
 }
 
 /* My friends page */
@@ -308,6 +234,7 @@ progress[value]::-webkit-progress-value {
 #reject-btn {
   margin-bottom: 30px;
   margin-top: 10px;
+  background-color: #c22229;
 }
 
 #remove-btn {
@@ -316,6 +243,163 @@ progress[value]::-webkit-progress-value {
 
 /* goodbay page (after you remove your account */
 
-#goodbay {
+#goodbye {
   text-align: center;
+}
+
+/* page of a friend user */
+
+.user-friends {
+  position: absolute;
+  top: 720px;
+  left: 120px;
+}
+
+/* GOALS-RELATED VIEWS */
+
+/* Create goal page */
+
+#create-goal > div {
+  margin: 5px;
+}
+
+#goalName {
+  width: 300px;
+}
+
+/* Dashboard page */
+
+.dashboard {
+  margin-top: 120px;
+  margin-left: 120px;
+}
+
+.dashboard a {
+  text-align: center;
+  text-decoration: none;
+  color: #fbb238;
+}
+
+.dashboard h2 {
+  margin-bottom: 10px;
+}
+
+.single-goal-section {
+  height: 120px;
+}
+
+#goalName h4 {
+  color: black;
+  text-align: left;
+  margin: 5px;
+}
+
+#create-new-goal-btn {
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+#progress-btn {
+  background-color: #066194;
+  margin-bottom: 20px;
+  position: relative;
+  bottom: 60px;
+  left: 750px;
+}
+
+progress[value] {
+  width: 700px;
+  height: 50px;
+  -webkit-appearance: none;
+  appearance: inherit;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #1c9fbb;
+  border-radius: 3px;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #066194;
+  border-radius: 3px;
+}
+
+/* Goal details page */
+
+.goal-details {
+  padding: 70px 0px 70px 100px;
+}
+
+.goal-details button {
+  margin: 30px 10px;
+}
+
+#remove-goal-btn {
+  background-color: #60350b;
+}
+
+#theGoalName {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #fbb238, 2px 2px #fbb238, 3px 3px black, 4px 4px#FBB238,
+    5px 5px black, 6px 6px #fbb238, 7px 7px black, 8px 8px #fbb238,
+    9px 9px black, 10px 10px #fbb238, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#goalCategory {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #29b1d4, 2px 2px #29b1d4, 3px 3px black, 4px 4px #29b1d4,
+    5px 5px black, 6px 6px #29b1d4, 7px 7px black, 8px 8px #29b1d4,
+    9px 9px black, 10px 10px #29b1d4, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#theGoalNumber {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #8d6236, 2px 2px #8d6236, 3px 3px black, 4px 4px #8d6236,
+    5px 5px black, 6px 6px #8d6236, 7px 7px black, 8px 8px #8d6236,
+    9px 9px black, 10px 10px #8d6236, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#theCurrentNumber {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #2a2d93, 2px 2px #2a2d93, 3px 3px black, 4px 4px #2a2d93,
+    5px 5px black, 6px 6px #2a2d93, 7px 7px black, 8px 8px #2a2d93,
+    9px 9px black, 10px 10px #2a2d93, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#thePercentage {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #c22229, 2px 2px #c22229, 3px 3px black, 4px 4px #c22229,
+    5px 5px black, 6px 6px #c22229, 7px 7px black, 8px 8px #c22229,
+    9px 9px black, 10px 10px #c22229, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+/* Update goal page */
+
+.page-title span {
+  font-weight: lighter;
 }

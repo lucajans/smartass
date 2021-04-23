@@ -1,22 +1,29 @@
 <div class="dashboard">
-    <h2>Here you can see the overview of your goals</h2>
+    <h2>The overview of your goals</h2>
+
+    <button class='basic-btn' id="create-new-goal-btn">
+        <a href="/createGoal">Create a new goal</a></button>
 
     {{#if dashboardGoals}}
     {{#each dashboardGoals}}
-    <a href="/user/goals/{{this._id}}">
-        <h3>{{this.goalName}}</h3>
-    </a>
-    {{!-- Add attributes max and value --}}
-    <div id="goalProgress">
-        <progress id="goalProgressBar" max="100" value={{this.percentage}}> </progress>
+    <div class="single-goal-section">
+        <a href="/user/goals/{{this._id}}" id="goalName">
+            <h4>{{this.goalName}}</h4>
+        </a>
+        {{!-- Add attributes max and value --}}
+        <div id="goalProgress">
+            <progress id="goalProgressBar" max="100" value={{this.percentage}}> </progress>
+        </div>
+        <button class="basic-btn" id="progress-btn"><a href="/user/goals/{{this._id}}/progress">Add your progress
+            </a></button>
     </div>
-    <button><a href="/user/goals/{{this._id}}/progress">Add your progress here.</a></button>
 
     {{/each}}
     {{else}}
     <h4>You have no goals yet. Please, create one!</h4>
-    {{/if}}
     <br>
-    <button id="create-another-goal" class='basic-btn' id="dashboard-btn">
+    <button id="create-first-goal" class='basic-btn'>
         <a href="/createGoal">Create a new goal</a></button>
+    {{/if}}
+
 </div>

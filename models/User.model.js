@@ -30,8 +30,6 @@ const userSchema = new Schema({
   description: String,
   profilePicture: {
     type: String,
-    default:
-      "https://www.pngitem.com/pimgs/m/516-5167304_transparent-background-white-user-icon-png-png-download.png",
   },
   pendingInvitations: [
     {

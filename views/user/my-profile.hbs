@@ -3,32 +3,28 @@
 {{#if user}}
 
 <div class="userProfile">
-  <div class="profile-background"></div>
-  <h1 class="profileUsername">{{ user.username }}</h1>
+
   <div class="profile-picture">
     <img src="{{ user.profilePicture }}" alt="Profile picture" class="myProfilePicture">
-  </div>
-
-  <div class="userData">
-
-    <p>Username: {{ user.username }}</p>
-    <p>Full Name: {{ user.fullname }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Location: {{ user.location }}</p>
-    <p>A short word about yourself: {{ user.description }}</p>
-    <p>Favourite book: {{ user.favouriteBook }}</p>
-    <p>Favourite movie: {{ user.favouriteMovie }}</p>
-    </h4>
+    <h1 class="profileUsername">{{ user.username }}</h1>
   </div>
 
   <div class="user-btn">
     <button type="submit" id="edit-profile" class="basic-btn"><a href="/user/my-profile/edit">Edit your
         profile</a></button><br>
+    <button type="submit" id="delete-profile" class="basic-btn"><a href="/user/my-profile/delete"></a>Delete your
+      profile</button>
+  </div>
 
-    <form method="POST" action="/user/my-profile/delete">
-      <button type="submit" id="delete-profile" class="basic-btn"><a href="/user/my-profile/delete"></a>Delete your
-        profile</button>
-    </form>
+  <div class="userData">
+    <h4><span>Username: </span>{{ user.username }}</h4>
+    <h4><span>Full Name: </span>{{ user.fullname }}</h4>
+    <h4><span>Email: </span>{{ user.email }}</h4>
+    <h4><span>Location: </span>{{ user.location }}</h4>
+    <h4><span>Favourite book: </span>{{ user.favouriteBook }}</h4>
+    <h4><span>Favourite movie </span>{{ user.favouriteMovie }}</h4>
+    <h4 class="description"><span>A short word about yourself: </span>{{ user.descriptio }}</h4>
+    </h4>
   </div>
 
 </div>

@@ -1,37 +1,25 @@
-<div id="user-profile">
-  <div class="profile-background"></div>
+<div class="userProfile">
+
   <div class="profile-picture">
-    <img src="{{ thisUser.profilePicture }}" alt="Profile picture">
+    <img src="{{ thisUser.profilePicture }}" alt="Profile picture" class="myProfilePicture">
+    <h1 class="profileUsername">{{ thisUser.username }}</h1>
   </div>
 
-  <div id="user-data">
-    <h1>{{ thisUser.username }}</h1>
-
-    <h4>Username: {{ thisUser.username }}</h4>
-    <h4>Full Name: {{ thisUser.fullname }}</h4>
-    <h4>Email: {{ thisUser.email }}</h4>
-    <h4>Location: {{ thisUser.location }}</h4>
-    <h4>A short word about yourself: {{ thisUser.description }}</h4>
-    <h4>Favourite book: {{ thisUser.favouriteBook }}</h4>
-    <h4>Favourite movie: {{ thisUser.favouriteMovie }}</h4>
-    <h4>Privacy of your profile: {{ thisUser.privacy }}</h4>
-    <h4>Current color palette: <div style="color: {{ thisUser.colorMode }}">COLOR CIRCLE</div>
-    </h4>
-  </div>
-
-  <div class="button-div">
-    <button type="submit" id="add-friends-btn"><a href="/user/profile/{{ thisUser._id }}/invitation-sent">Invite to
+  <div class="user-btn">
+    <button type="submit" id="invite-btn" class="basic-btn">
+      <a href="/user/profile/{{ thisUser._id }}/invitation-sent">Invite to
         friends</a></button>
   </div>
 
-  <div class="users-friends">
-    <h2 class="profile-subtitle">Friends</h2>
-    <div class="user-images">
-      {{#each thisUser.friends}}
-      <h4>{{ this.username }}</h4>
-      <p>{{ this.fullname }}</p>
-      {{/each}}
-    </div>
+  <div class="userData">
+    <h4><span>Username: </span>{{ thisUser.username }}</h4>
+    <h4><span>Full Name: </span>{{ thisUser.fullname }}</h4>
+    <h4><span>Email: </span>{{ thisUser.email }}</h4>
+    <h4><span>Location: </span>{{ thisUser.location }}</h4>
+    <h4><span>Favourite book: </span>{{ thisUser.favouriteBook }}</h4>
+    <h4><span>Favourite movie: </span>{{ thisUser.favouriteMovie }}</h4>
+    <h4 class="description"><span>A short word about yourself: </span>{{ thisUser.description }}</h4>
+    </h4>
   </div>
 
 </div>

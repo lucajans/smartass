@@ -95,9 +95,12 @@ router.get("/profile/:userId", isLoggedIn, (req, res, next) => {
       if (
         thisUser.friends.find((el) => el.username === req.session.user.username)
       ) {
-        return res.render("user/friend-profile", { thisUser });
+        return res.render("user/friend-profile", {
+          thisUser,
+          user: req.session.user,
+        });
       }
-      res.render("user/stranger-profile", { thisUser });
+      res.render("user/stranger-profile", { thisUser, user: req.session.user });
     });
 });
 

@@ -1,32 +1,34 @@
-<div id="user-profile">
-  <div class="profile-background"></div>
+<div class="userProfile">
+
   <div class="profile-picture">
-    <img src="{{ thisUser.profilePicture }}" alt="Profile picture">
+    <img src="{{ thisUser.profilePicture }}" alt="Profile picture" class="myProfilePicture">
+    <h1 class="profileUsername" id="username-friend">{{ thisUser.username }}</h1>
   </div>
 
-  <div id="user-data">
-    <h1>{{ thisUser.username }}</h1>
+  <div class="user-btn">
+    <button type="submit" id="rmv-friends-btn" class="basic-btn">Remove from friends</button>
+  </div>
 
-    <h4>Username: {{ thisUser.username }}</h4>
-    <h4>Full Name: {{ thisUser.fullname }}</h4>
-    <h4>Email: {{ thisUser.email }}</h4>
-    <h4>Location: {{ thisUser.location }}</h4>
-    <h4>A short word about yourself: {{ thisUser.description }}</h4>
-    <h4>Favourite book: {{ thisUser.favouriteBook }}</h4>
-    <h4>Favourite movie: {{ thisUser.favouriteMovie }}</h4>
+  <div class="userData">
+    <h4><span>Username: </span>{{ thisUser.username }}</h4>
+    <h4><span>Full Name: </span>{{ thisUser.fullname }}</h4>
+    <h4><span>Email: </span>{{ thisUser.email }}</h4>
+    <h4><span>Location: </span>{{ thisUser.location }}</h4>
+    <h4><span>Favourite book: </span>{{ thisUser.favouriteBook }}</h4>
+    <h4><span>Favourite movie </span>{{ thisUser.favouriteMovie }}</h4>
+    <h4 class="description"><span>A short word about yourself: </span>{{ thisUser.descriptio }}</h4>
     </h4>
   </div>
 
-  <div class="button-div">
-    <button type="submit" id="rmv-friends-btn">Remove from friends</button>
-  </div>
-
-  <div class="users-friends">
-    <h2 class="profile-subtitle">Friends</h2>
-    <div class="user-images">
+  <div class="user-friends">
+    <h2 class="profile-subtitle"><span>Friends</span></h2>
+    <div class="friends-gallery">
       {{#each thisUser.friends}}
-      <h4>{{ this.username }}</h4>
-      <p>{{ this.fullname }}</p>
+      <div class="single-friend-profile">
+        <img class="profile-pic-friend" src="{{ this.profilePicture }}">
+        <p class="username"><a href="/user/profile/{{ this._id}}">{{ this.username }}</a></p>
+        <p class="fullname">{{ this.fullname }}</p>
+      </div>
       {{/each}}
     </div>
   </div>

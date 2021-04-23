@@ -9,11 +9,7 @@
     <h1 class="profileUsername">{{ user.username }}</h1>
   </div>
 
-  <div class="edit-text">
-    <h3>You are editing your profile</h3>
-  </div>
-
-  <div id="user-data-edit">
+  <div id="user-data-edit" class="userData">
 
     <form id="profile-edit" method="POST" action="/user/my-profile/edit" enctype="multipart/form-data">
       <label for="username">Username</label>
@@ -31,16 +27,16 @@
       <label for="location">Location</label>
       <input type="location" name="location" class="location" value="{{ user.location }}"><br>
 
-      <label for="description">A short word about yourself</label>
-      <input type="text" name="description" class="description" value="{{ user.description }}"><br>
-
       <label for="favouriteBook">Favourite book</label>
-      <input type="text" name="favouriteBook" class="favouriteBook" value="{{ user.favouriteBook }}"><br>
+      <input type="text" name="favouriteBook" class="text" value="{{ user.favouriteBook }}"><br>
 
       <label for="favouriteMovie">Favourite movie</label>
-      <input type="text" name="favouriteMovie" class="favouriteMovie" value="{{ user.favouriteMovie }}"><br>
+      <input type="text" name="favouriteMovie" class="text" value="{{ user.favouriteMovie }}"><br>
 
-      <button type="submit" id="save-edit-profile">Save the changes!</button>
+      <label for="description">A short word about yourself</label>
+      <input type="text" name="description" class="text" value="{{ user.description }}"><br>
+
+      <button type="submit" id="save-edit-profile" class="basic-btn">Save the changes!</button>
     </form>
     </form>
   </div>
