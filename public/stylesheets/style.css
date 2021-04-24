@@ -406,3 +406,51 @@ progress[value]::-webkit-progress-value {
 }
 
 /* ONBOARDING VIEWS */
+
+/* The onboarding page */
+
+.onboarding {
+  text-align: center;
+}
+
+.onboarding img {
+  height: 300px;
+  position: relative;
+  top: 100px;
+}
+
+.onboarding h4 {
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.onboarding button {
+  margin: 10px;
+}
+
+/* Onboarding step 1 page */
+
+.checklist {
+  position: absolute;
+  top: 120 px;
+  right: 200px;
+  background-color: #8d6236;
+  height: 260px;
+  width: 300px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.checklist h4 {
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.checklist input {
+  margin: 5px;
+}
+
+.checklist-items {
+  text-align: left;
+  margin-left: 15px;
+}

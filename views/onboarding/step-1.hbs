@@ -1,19 +1,4 @@
-<h1>This is step 1</h1>
-
 <div>
-  <div id="checklist">
-    <h3>The checklist</h3>
-    <input type="checkbox" id="step1" name="step1" value="step1">
-    <label for="step1"> Step 1: Fill in your profile</label><br>
-
-    <input type="checkbox" id="step2" name="step2" value="step2">
-    <label for="step2"> Step 2: Set your first goal</label><br>
-
-    <input type="checkbox" id="step3" name="step3" value="step3">
-    <label for="step3"> Step 3: Build your friends circle</label><br><br>
-
-    <button typu="submit"><a href="/onboarding/step-2">Next step!</a></button><br><br>
-  </div>
 
   <!--Edit your personal profile-->
 
@@ -26,13 +11,9 @@
       <h1 class="profileUsername">{{ user.username }}</h1>
     </div>
 
-    <div class="edit-text">
-      <h3>You are editing your profile</h3>
-    </div>
+    <div id="user-data-edit" class="userData">
 
-    <div id="user-data-edit">
-
-      <form id="profile-edit" method="POST" action="/onboarding/step-1/done">
+      <form id="profile-edit" method="POST" action="/onboarding/step-1/done" enctype="multipart/form-data">
         <label for="username">Username</label>
         <input type="text" name="username" class="username" value="{{ user.username }}"><br>
 
@@ -48,20 +29,35 @@
         <label for="location">Location</label>
         <input type="location" name="location" class="location" value="{{ user.location }}"><br>
 
-        <label for="description">A short word about yourself</label>
-        <input type="text" name="description" class="description" value="{{ user.description }}"><br>
-
         <label for="favouriteBook">Favourite book</label>
-        <input type="text" name="favouriteBook" class="favouriteBook" value="{{ user.favouriteBook }}"><br>
+        <input type="text" name="favouriteBook" class="text" value="{{ user.favouriteBook }}"><br>
 
         <label for="favouriteMovie">Favourite movie</label>
-        <input type="text" name="favouriteMovie" class="favouriteMovie" value="{{ user.favouriteMovie }}"><br>
+        <input type="text" name="favouriteMovie" class="text" value="{{ user.favouriteMovie }}"><br>
 
-        <button type="submit" id="save-edit-profile">Save the changes!</button>
+        <label for="description">A short word about yourself</label>
+        <input type="text" name="description" class="text" value="{{ user.description }}"><br>
+
+        <button type="submit" id="save-edit-profile" class="basic-btn">Save the changes!</button>
+      </form>
       </form>
     </div>
 
+
+    <div class="checklist">
+      <h4>The checklist</h4>
+      <div class="checklist-items">
+        <input type="checkbox" id="step1" name="step1" value="step1">
+        <label for="step1"> Step 1: Fill in your profile</label><br>
+
+        <input type="checkbox" id="step2" name="step2" value="step2">
+        <label for="step2"> Step 2: Set your first goal</label><br>
+
+        <input type="checkbox" id="step3" name="step3" value="step3">
+        <label for="step3"> Step 3: Build your friends circle</label><br><br>
+
+      </div>
+      <button type="submit" class="basic-btn"><a href="/onboarding/step-2">Next step!</a></button><br><br>
+    </div>
   </div>
   {{/if}}
-
-</div>

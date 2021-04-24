@@ -1,5 +1,5 @@
-<div class="page">
-  <div id="visual-onboard">
+<div class="page onboarding">
+  <div>
     <img
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Books_Flat_Icon_Vector.svg/691px-Books_Flat_Icon_Vector.svg.png"
       alt="some picture of books">
@@ -9,13 +9,13 @@
     {{#if user}}
     <h2 class="page-title">Welcome to smartass, {{user.username}}!</h2>
     {{/if}}
-    <h4>Follow the checklist to get yourself started! Or if you think
-      you’re better than that, skip the onboarding. Whatever.
+    <h4>It is great to meet you! Here's a short checklist in case you're lost: <br>fill in your user profile, set your
+      first
+      goal and find your friends. Ready? Go!
       </h2>
   </div>
 
   <div class="btn-onboard">
-    <button type="submit" class="basic-btn"><a href="/onboarding/step-1">Let's start!</a></button>
-    <button type="submit" class="basic-btn"><a href="/user/dashboard">Skip!</a></button>
+    <button type="submit" class="basic-btn"><a href="/user/my-profile">Let's start!</a></button>
   </div>
 </div>

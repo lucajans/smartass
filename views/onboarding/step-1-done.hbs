@@ -1,9 +1,36 @@
-<h1>This is step 1 DONE</h1>
+{{#if user}}
 
-<div>
-  <div id="checklist">
-    <h3>The checklist</h3>
-    <input type="checkbox" id="step1" name="step1" value="step1" checked>
+<div class="userProfile">
+
+  <div class="profile-picture">
+    <img src="{{ user.profilePicture }}" alt="Profile picture" class="myProfilePicture">
+    <h1 class="profileUsername">{{ user.username }}</h1>
+  </div>
+
+  <div class="user-btn">
+    <button type="submit" id="edit-profile" class="basic-btn"><a href="/onboarding/step-1">Edit your
+        profile</a></button><br>
+    <button type="submit" id="delete-profile" class="basic-btn"><a href="/user/my-profile/delete"></a>Delete your
+      profile</button>
+  </div>
+
+  <div class="userData">
+    <h4><span>Username: </span>{{ user.username }}</h4>
+    <h4><span>Full Name: </span>{{ user.fullname }}</h4>
+    <h4><span>Email: </span>{{ user.email }}</h4>
+    <h4><span>Location: </span>{{ user.location }}</h4>
+    <h4><span>Favourite book: </span>{{ user.favouriteBook }}</h4>
+    <h4><span>Favourite movie </span>{{ user.favouriteMovie }}</h4>
+    <h4 class="description"><span>A short word about yourself: </span>{{ user.description }}</h4>
+    </h4>
+  </div>
+</div>
+{{/if}}
+
+<div class="checklist">
+  <h4>The checklist</h4>
+  <div class="checklist-items">
+    <input type="checkbox" id="step1" name="step1" value="step1">
     <label for="step1"> Step 1: Fill in your profile</label><br>
 
     <input type="checkbox" id="step2" name="step2" value="step2">
@@ -12,41 +39,7 @@
     <input type="checkbox" id="step3" name="step3" value="step3">
     <label for="step3"> Step 3: Build your friends circle</label><br><br>
 
-    <button typu="submit"><a href="/onboarding/step-2">Next step!</a></button><br><br>
   </div>
-
-  <!--View your personal profile -->
-
-  {{#if user}}
-
-  <div class="userProfile">
-    <div class="profile-background"></div>
-    <div class="profile-picture">
-      <img src="{{ user.profilePicture }}" alt="Profile picture" class="myProfilePicture">
-      <h1 class="profileUsername">{{ user.username }}</h1>
-    </div>
-
-    <div id="user-data">
-
-      <h4>Username: {{ user.username }}</h4>
-      <h4>Full Name: {{ user.fullname }}</h4>
-      <h4>Email: {{ user.email }}</h4>
-      <h4>Location: {{ user.location }}</h4>
-      <h4>A short word about yourself: {{ user.description }}</h4>
-      <h4>Favourite book: {{ user.favouriteBook }}</h4>
-      <h4>Favourite movie: {{ user.favouriteMovie }}</h4>
-      </h4>
-    </div>
-
-    <div class="user-btn">
-      <button type="submit" id="edit-profile"><a href="/onboarding/step-1">Edit your profile</a></button><br>
-
-      <form method="POST" action="/user/my-profile/delete">
-        <button type="submit" id="delete-profile"><a href="/user/my-profile/delete"></a>Delete your profile</button>
-      </form>
-    </div>
-
-  </div>
-  {{/if}}
-
+  <button type="submit" class="basic-btn"><a href="/onboarding/step-2">Next step!</a></button><br><br>
+</div>
 </div>
