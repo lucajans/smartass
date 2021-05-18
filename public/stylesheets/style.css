@@ -105,9 +105,3 @@ select {
 #visual-home {
   height: 50vh;
 }
-
-@media (max-width: 768px) {
-  #visual-home {
-    height: 70vh;
-  }
-}
