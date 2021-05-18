@@ -103,11 +103,11 @@ select {
 }
 
 #visual-home {
-  width: 30vw;
+  height: 50vh;
 }
 
 @media (max-width: 768px) {
   #visual-home {
-    width: 90vw;
+    height: 70vh;
   }
 }
