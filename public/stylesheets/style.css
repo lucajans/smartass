@@ -12,8 +12,20 @@ h1 {
   font-size: 80px;
 }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+
 h2 {
   font-size: 50px;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 40px;
+  }
 }
 
 h4 {
@@ -21,7 +33,7 @@ h4 {
   font-weight: lighter;
 }
 
-/* basic settings (based on signup and login pages) */
+/* basic settings */
 
 .page {
   display: flex;
@@ -30,7 +42,7 @@ h4 {
 }
 
 .page-title {
-  margin-top: 120px;
+  margin-top: 20vh;
 }
 
 .basic-form {
@@ -82,7 +94,7 @@ select {
 
 #title-home {
   text-align: center;
-  margin-top: 150px;
+  margin-top: 20vh;
 }
 
 #visual-home-div {
@@ -91,366 +103,5 @@ select {
 }
 
 #visual-home {
-  width: 300px;
-}
-
-/* USER VIEWS */
-
-/* my profile page */
-
-.userProfile {
-  padding-left: 100px;
-}
-
-.myProfilePicture {
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
-  margin-top: 100px;
-}
-
-.profileUsername {
-  position: absolute;
-  top: 120px;
-  left: 420px;
-  text-align: left;
-}
-
-.user-btn {
-  position: absolute;
-  top: 250px;
-  left: 420px;
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-}
-
-.user-btn button {
-  margin: 30px 10px;
-}
-
-.userData {
-  position: absolute;
-  top: 380px;
-  left: 120px;
-  text-align: left;
-  padding-bottom: 100px;
-}
-
-.userData span {
-  font-weight: bold;
-}
-
-.userData h4 {
-  line-height: 20px;
-}
-
-.text {
-  width: 400px;
-  line-height: 25px;
-}
-
-/* My profile page – edit */
-
-#profile-edit input {
-  padding: 5px;
-  margin: 5px;
-}
-
-#profile-edit label {
-  font-size: 20px;
-}
-
-/* My friends page */
-
-.my-friends {
-  padding-left: 100px;
-}
-
-.my-friends h2 {
-  padding-top: 50px;
-  margin-bottom: 0px;
-}
-
-.my-friends h4 {
-  margin: 0;
-  padding-top: 30px;
-}
-
-.search-friends input {
-  padding: 5px;
-  width: 300px;
-  margin-bottom: 30px;
-}
-
-.friends-gallery {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-}
-
-.friends-gallery p {
-  text-align: center;
-}
-
-.username {
-  margin-top: 5px;
-  margin-bottom: 1px;
-  padding-bottom: 1px;
-}
-
-.single-friend-profile {
-  width: 150px;
-  margin-top: 0;
-  margin-bottom: 10px;
-  text-align: center;
-  padding-right: 30px;
-}
-
-.single-friend-profile img {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  border-color: black;
-  margin-top: 5px;
-}
-
-.username a {
-  text-decoration: none;
-  color: #2a2d93;
-  font-weight: bold;
-}
-
-.basic-btn a {
-  color: #fbb238;
-  text-decoration: none;
-}
-
-.friends-btn {
-  padding: 10px 30px;
-  margin-top: 2px;
-}
-
-#reject-btn {
-  margin-bottom: 30px;
-  margin-top: 10px;
-  background-color: #c22229;
-}
-
-#remove-btn {
-  margin-bottom: 30px;
-}
-
-/* goodbay page (after you remove your account */
-
-#goodbye {
-  text-align: center;
-}
-
-/* page of a friend user */
-
-.user-friends {
-  position: absolute;
-  top: 720px;
-  left: 120px;
-}
-
-/* GOALS-RELATED VIEWS */
-
-/* Create goal page */
-
-#create-goal > div {
-  margin: 5px;
-}
-
-#goalName {
-  width: 300px;
-}
-
-/* Dashboard page */
-
-.dashboard {
-  margin-top: 120px;
-  margin-left: 120px;
-}
-
-.dashboard a {
-  text-align: center;
-  text-decoration: none;
-  color: #fbb238;
-}
-
-.dashboard h2 {
-  margin-bottom: 10px;
-}
-
-.single-goal-section {
-  height: 120px;
-}
-
-#goalName h4 {
-  color: black;
-  text-align: left;
-  margin: 5px;
-}
-
-#create-new-goal-btn {
-  margin-bottom: 50px;
-  margin-top: 20px;
-}
-
-#progress-btn {
-  background-color: #066194;
-  margin-bottom: 20px;
-  position: relative;
-  bottom: 60px;
-  left: 750px;
-}
-
-progress[value] {
-  width: 700px;
-  height: 50px;
-  -webkit-appearance: none;
-  appearance: inherit;
-}
-
-progress[value]::-webkit-progress-bar {
-  background-color: #1c9fbb;
-  border-radius: 3px;
-}
-
-progress[value]::-webkit-progress-value {
-  background-color: #066194;
-  border-radius: 3px;
-}
-
-/* Goal details page */
-
-.goal-details {
-  padding: 70px 0px 70px 100px;
-}
-
-.goal-details button {
-  margin: 30px 10px;
-}
-
-#remove-goal-btn {
-  background-color: #60350b;
-}
-
-#theGoalName {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px #fbb238, 2px 2px #fbb238, 3px 3px black, 4px 4px#FBB238,
-    5px 5px black, 6px 6px #fbb238, 7px 7px black, 8px 8px #fbb238,
-    9px 9px black, 10px 10px #fbb238, 10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#goalCategory {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px #29b1d4, 2px 2px #29b1d4, 3px 3px black, 4px 4px #29b1d4,
-    5px 5px black, 6px 6px #29b1d4, 7px 7px black, 8px 8px #29b1d4,
-    9px 9px black, 10px 10px #29b1d4, 10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#theGoalNumber {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px #8d6236, 2px 2px #8d6236, 3px 3px black, 4px 4px #8d6236,
-    5px 5px black, 6px 6px #8d6236, 7px 7px black, 8px 8px #8d6236,
-    9px 9px black, 10px 10px #8d6236, 10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#theCurrentNumber {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px #2a2d93, 2px 2px #2a2d93, 3px 3px black, 4px 4px #2a2d93,
-    5px 5px black, 6px 6px #2a2d93, 7px 7px black, 8px 8px #2a2d93,
-    9px 9px black, 10px 10px #2a2d93, 10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-#thePercentage {
-  position: relative;
-  z-index: 2;
-  font-size: 8em;
-  letter-spacing: 15px;
-  text-transform: uppercase;
-  transform: rotate(-10deg);
-  text-shadow: 1px 1px #c22229, 2px 2px #c22229, 3px 3px black, 4px 4px #c22229,
-    5px 5px black, 6px 6px #c22229, 7px 7px black, 8px 8px #c22229,
-    9px 9px black, 10px 10px #c22229, 10px 10px 30px rgba(0, 0, 0, 0);
-}
-
-/* Update goal page */
-
-.page-title span {
-  font-weight: lighter;
-}
-
-/* ONBOARDING VIEWS */
-
-/* The onboarding page */
-
-.onboarding {
-  text-align: center;
-}
-
-.onboarding img {
-  height: 300px;
-  position: relative;
-  top: 100px;
-}
-
-.onboarding h4 {
-  line-height: 30px;
-  margin-bottom: 20px;
-}
-
-.onboarding button {
-  margin: 10px;
-}
-
-/* Onboarding step 1 page */
-
-.checklist {
-  position: absolute;
-  top: 120 px;
-  right: 200px;
-  background-color: #8d6236;
-  height: 260px;
-  width: 300px;
-  border-radius: 6px;
-  text-align: center;
-}
-
-.checklist h4 {
-  font-weight: bold;
-  padding-top: 20px;
-}
-
-.checklist input {
-  margin: 5px;
-}
-
-.checklist-items {
-  text-align: left;
-  margin-left: 15px;
+  width: 30vw;
 }

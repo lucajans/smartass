@@ -1,0 +1,161 @@
+/* USER VIEWS */
+
+/* my profile page */
+
+.userProfile {
+  padding-left: 100px;
+}
+
+.myProfilePicture {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  margin-top: 100px;
+}
+
+.profileUsername {
+  position: absolute;
+  top: 120px;
+  left: 420px;
+  text-align: left;
+}
+
+.user-btn {
+  position: absolute;
+  top: 250px;
+  left: 420px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+
+.user-btn button {
+  margin: 30px 10px;
+}
+
+.userData {
+  position: absolute;
+  top: 380px;
+  left: 120px;
+  text-align: left;
+  padding-bottom: 100px;
+}
+
+.userData span {
+  font-weight: bold;
+}
+
+.userData h4 {
+  line-height: 20px;
+}
+
+.text {
+  width: 400px;
+  line-height: 25px;
+}
+
+/* My profile page – edit */
+
+#profile-edit input {
+  padding: 5px;
+  margin: 5px;
+}
+
+#profile-edit label {
+  font-size: 20px;
+}
+
+/* My friends page */
+
+.my-friends {
+  padding-left: 100px;
+}
+
+.my-friends h2 {
+  padding-top: 50px;
+  margin-bottom: 0px;
+}
+
+.my-friends h4 {
+  margin: 0;
+  padding-top: 30px;
+}
+
+.search-friends input {
+  padding: 5px;
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+.friends-gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+
+.friends-gallery p {
+  text-align: center;
+}
+
+.username {
+  margin-top: 5px;
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+}
+
+.single-friend-profile {
+  width: 150px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  padding-right: 30px;
+}
+
+.single-friend-profile img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border-color: black;
+  margin-top: 5px;
+}
+
+.username a {
+  text-decoration: none;
+  color: #2a2d93;
+  font-weight: bold;
+}
+
+.basic-btn a {
+  color: #fbb238;
+  text-decoration: none;
+}
+
+.friends-btn {
+  padding: 10px 30px;
+  margin-top: 2px;
+}
+
+#reject-btn {
+  margin-bottom: 30px;
+  margin-top: 10px;
+  background-color: #c22229;
+}
+
+#remove-btn {
+  margin-bottom: 30px;
+}
+
+/* goodbay page (after you remove your account */
+
+#goodbye {
+  text-align: center;
+}
+
+/* page of a friend user */
+
+.user-friends {
+  position: absolute;
+  top: 720px;
+  left: 120px;
+}

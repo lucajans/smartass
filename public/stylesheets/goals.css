@@ -1,0 +1,198 @@
+/* GOALS-RELATED VIEWS */
+
+/* Create goal page */
+
+#create-goal > div {
+  margin: 5px;
+}
+
+#goalName {
+  width: 300px;
+}
+
+/* Dashboard page */
+
+.dashboard {
+  margin-top: 120px;
+  margin-left: 120px;
+}
+
+.dashboard a {
+  text-align: center;
+  text-decoration: none;
+  color: #fbb238;
+}
+
+.dashboard h2 {
+  margin-bottom: 10px;
+}
+
+.single-goal-section {
+  height: 120px;
+}
+
+#goalName h4 {
+  color: black;
+  text-align: left;
+  margin: 5px;
+}
+
+#create-new-goal-btn {
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+#progress-btn {
+  background-color: #066194;
+  margin-bottom: 20px;
+  position: relative;
+  bottom: 60px;
+  left: 750px;
+}
+
+progress[value] {
+  width: 700px;
+  height: 50px;
+  -webkit-appearance: none;
+  appearance: inherit;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #1c9fbb;
+  border-radius: 3px;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #066194;
+  border-radius: 3px;
+}
+
+/* Goal details page */
+
+.goal-details {
+  padding: 70px 0px 70px 100px;
+}
+
+.goal-details button {
+  margin: 30px 10px;
+}
+
+#remove-goal-btn {
+  background-color: #60350b;
+}
+
+#theGoalName {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #fbb238, 2px 2px #fbb238, 3px 3px black, 4px 4px#FBB238,
+    5px 5px black, 6px 6px #fbb238, 7px 7px black, 8px 8px #fbb238,
+    9px 9px black, 10px 10px #fbb238, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#goalCategory {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #29b1d4, 2px 2px #29b1d4, 3px 3px black, 4px 4px #29b1d4,
+    5px 5px black, 6px 6px #29b1d4, 7px 7px black, 8px 8px #29b1d4,
+    9px 9px black, 10px 10px #29b1d4, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#theGoalNumber {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #8d6236, 2px 2px #8d6236, 3px 3px black, 4px 4px #8d6236,
+    5px 5px black, 6px 6px #8d6236, 7px 7px black, 8px 8px #8d6236,
+    9px 9px black, 10px 10px #8d6236, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#theCurrentNumber {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #2a2d93, 2px 2px #2a2d93, 3px 3px black, 4px 4px #2a2d93,
+    5px 5px black, 6px 6px #2a2d93, 7px 7px black, 8px 8px #2a2d93,
+    9px 9px black, 10px 10px #2a2d93, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+#thePercentage {
+  position: relative;
+  z-index: 2;
+  font-size: 8em;
+  letter-spacing: 15px;
+  text-transform: uppercase;
+  transform: rotate(-10deg);
+  text-shadow: 1px 1px #c22229, 2px 2px #c22229, 3px 3px black, 4px 4px #c22229,
+    5px 5px black, 6px 6px #c22229, 7px 7px black, 8px 8px #c22229,
+    9px 9px black, 10px 10px #c22229, 10px 10px 30px rgba(0, 0, 0, 0);
+}
+
+/* Update goal page */
+
+.page-title span {
+  font-weight: lighter;
+}
+
+/* ONBOARDING VIEWS */
+
+/* The onboarding page */
+
+.onboarding {
+  text-align: center;
+}
+
+.onboarding img {
+  height: 300px;
+  position: relative;
+  top: 100px;
+}
+
+.onboarding h4 {
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.onboarding button {
+  margin: 10px;
+}
+
+/* Onboarding step 1 page */
+
+.checklist {
+  position: absolute;
+  top: 120 px;
+  right: 200px;
+  background-color: #8d6236;
+  height: 260px;
+  width: 300px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.checklist h4 {
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.checklist input {
+  margin: 5px;
+}
+
+.checklist-items {
+  text-align: left;
+  margin-left: 15px;
+}

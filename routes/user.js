@@ -18,9 +18,9 @@ router.post(
   "/my-profile/edit",
   isLoggedIn,
   parser.single("image"),
-  (req, res, next) => {
+  (req, res) => {
     console.log(req.file);
-    const profilePicture = req.file.path;
+    const profilePicture = req.file?.path;
     const {
       username,
       fullname,
@@ -29,24 +29,25 @@ router.post(
       description,
       favouriteBook,
       favouriteMovie,
-      privacy,
-      colorMode,
     } = req.body;
+
+    const toClean = {
+      profilePicture,
+      username,
+      fullname,
+      email,
+      location,
+      description,
+      favouriteBook,
+      favouriteMovie,
+    };
+    const updater = Object.fromEntries(
+      Object.entries(toClean).filter((el) => el[1])
+    );
 
     User.findByIdAndUpdate(
       req.session.user._id, // the id of logged user (we use to identify the user whose data we update)
-      {
-        username: username,
-        fullname: fullname,
-        profilePicture: profilePicture,
-        email: email,
-        location: location,
-        description: description,
-        favouriteBook: favouriteBook,
-        favouriteMovie: favouriteMovie,
-        privacy: privacy,
-        colorMode: colorMode,
-      },
+      updater,
       { new: true }
     )
       .then((updatedUser) => {
