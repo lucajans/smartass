@@ -6,6 +6,16 @@
   height: 30vh;
 }
 
+#welcome-text {
+  width: 50vw;
+}
+
+@media (max-width: 768px) {
+  #welcome-text {
+    width: 90vw;
+  }
+}
+
 /* my profile page */
 
 .userProfile {
