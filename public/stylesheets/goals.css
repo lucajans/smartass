@@ -12,6 +12,9 @@
 
 #goalName {
   width: 300px;
+}
+
+#goalNameText {
   text-align: center;
 }
 
