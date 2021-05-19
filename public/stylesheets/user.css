@@ -153,6 +153,13 @@
   flex-wrap: nowrap;
 }
 
+@media (max-width: 768px) {
+  .friends-gallery {
+    width: 100vw;
+    flex-wrap: wrap;
+  }
+}
+
 .friends-gallery p {
   text-align: center;
 }
