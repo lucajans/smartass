@@ -4,6 +4,9 @@
 
 #create-goal > div {
   margin: 5px;
+}
+
+#goalNameBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
