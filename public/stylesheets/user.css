@@ -225,3 +225,11 @@
   top: 720px;
   left: 120px;
 }
+
+@media (max-width: 768px) {
+  .user-friends {
+    position: absolute;
+    top: 800px;
+    left: 20px;
+  }
+}
