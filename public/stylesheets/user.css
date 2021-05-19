@@ -22,11 +22,23 @@
   padding-left: 10vw;
 }
 
+@media (max-width: 768px) {
+  .userProfile {
+    padding-left: 10px;
+  }
+}
+
 .myProfilePicture {
   height: 240px;
   width: 240px;
   border-radius: 50%;
   margin-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .myProfilePicture {
+    text-align: center;
+  }
 }
 
 .profileUsername {
@@ -36,6 +48,13 @@
   text-align: left;
 }
 
+@media (max-width: 768px) {
+  .profileUsername {
+    text-align: center;
+    left: 10px;
+  }
+}
+
 .user-btn {
   position: absolute;
   top: 260px;
@@ -43,6 +62,14 @@
   text-align: left;
   display: flex;
   flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .user-btn {
+    top: 80px;
+    left: 0px;
+    text-align: center;
+  }
 }
 
 .user-btn button {
