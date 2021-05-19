@@ -92,6 +92,13 @@ progress[value]::-webkit-progress-value {
   padding: 70px 0px 70px 100px;
 }
 
+@media (max-width: 768px) {
+  .goal-details {
+    padding: 50px 0px 50px 20px;
+    width: 100vw;
+  }
+}
+
 .goal-details button {
   margin: 30px 10px;
 }
