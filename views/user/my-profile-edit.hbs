@@ -5,7 +5,9 @@
 <div class="userProfile">
   <div class="profile-background"></div>
   <div class="profile-picture">
-    <img src="{{ user.profilePicture }}" alt="Profile picture" class="myProfilePicture">
+    {{#if user.profilePicture}}
+    <img src="{{ user.profilePicture }}" class="myProfilePicture">
+    {{/if}}
     <h1 class="profileUsername">{{ user.username }}</h1>
   </div>
 

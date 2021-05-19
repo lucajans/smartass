@@ -4,10 +4,14 @@
 
 <div class="userProfile">
 
+
   <div class="profile-picture">
-    <img src="{{ user.profilePicture }}" alt="Profile picture" class="myProfilePicture">
+    {{#if user.profilePicture}}
+    <img src="{{ user.profilePicture }}" class="myProfilePicture">
+    {{/if}}
     <h1 class="profileUsername">{{ user.username }}</h1>
   </div>
+  
 
   <div class="user-btn">
     <button type="submit" id="edit-profile" class="basic-btn"><a href="/user/my-profile/edit">Edit your
