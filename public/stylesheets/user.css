@@ -37,8 +37,8 @@
 
 @media (max-width: 768px) {
   .myProfilePicture {
-    text-align: center;
     margin-top: 150px;
+    margin-left: 20px;
   }
 }
 
@@ -52,8 +52,8 @@
 @media (max-width: 768px) {
   .profileUsername {
     text-align: center;
-    left: 10px;
-    top: 200px;
+    left: 20px;
+    top: 300px;
   }
 }
 
@@ -68,7 +68,7 @@
 
 @media (max-width: 768px) {
   .user-btn {
-    top: 80px;
+    top: 50px;
     left: 20px;
     text-align: center;
   }
@@ -89,6 +89,7 @@
 @media (max-width: 768px) {
   .userData {
     left: 20px;
+    padding-bottom: 10px;
   }
 }
 
