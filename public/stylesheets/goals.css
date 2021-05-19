@@ -17,6 +17,12 @@
   margin-left: 120px;
 }
 
+@media (max-width: 768px) {
+  .dashboard {
+    margin-left: 20px;
+  }
+}
+
 .dashboard a {
   text-align: center;
   text-decoration: none;
@@ -48,6 +54,13 @@
   position: relative;
   bottom: 60px;
   left: 750px;
+}
+
+@media (max-width: 768px) {
+  #progress-btn {
+    bottom: 40px;
+    left: 20px;
+  }
 }
 
 progress[value] {
