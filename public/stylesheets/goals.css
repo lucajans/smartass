@@ -37,6 +37,12 @@
   height: 120px;
 }
 
+@media (max-width: 768px) {
+  .single-goal-section {
+    height: 180px;
+  }
+}
+
 #goalName h4 {
   color: black;
   text-align: left;
