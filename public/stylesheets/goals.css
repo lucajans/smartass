@@ -58,8 +58,8 @@
 
 @media (max-width: 768px) {
   #progress-btn {
-    bottom: 20px;
-    left: 10px;
+    bottom: 0px;
+    left: 0px;
   }
 }
 
